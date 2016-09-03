@@ -20,14 +20,14 @@
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
  
     <context:annotation-config />
-    <context:component-scan base-package="com.inapp.cms.*" />
+    <context:component-scan base-package="com.app.*" />
     <!-- <aop:aspectj-autoproxy />
-     <bean id="logAspect" class="com.inapp.cms.common.AuthenticationAspect" /> -->
+     <bean id="logAspect" class="com.app.common.AuthenticationAspect" /> -->
 	<mvc:annotation-driven />
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/cattle/*" />
-			<bean class="com.inapp.cms.common.ReqHandlerInterceptor"></bean>
+			<bean class="com.app.common.ReqHandlerInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
      
@@ -98,8 +98,8 @@
         </property>
     </bean>
     
- <!--  <bean id="userDAO" class="com.inapp.cms.dao.UserDaoImpl"></bean> 
-   <bean id="userManager" class="com.inapp.cms.service.UserManagerImpl"></bean>  -->
+ <!--  <bean id="userDAO" class="com.app.dao.UserDaoImpl"></bean> 
+   <bean id="userManager" class="com.app.service.UserManagerImpl"></bean>  -->
     
     
     

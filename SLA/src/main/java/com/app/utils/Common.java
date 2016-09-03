@@ -33,7 +33,7 @@ import java.util.regex.Pattern;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.log4j.Logger;
 
-import com.inapp.cms.entity.UserEntity;
+import com.app.entity.UserEntity;
 
 
 public class Common {
