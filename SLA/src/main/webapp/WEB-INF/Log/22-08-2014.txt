@@ -1,0 +1,4 @@
+0####forgotpassword##No User registered with given mail id##0##05:00:04 AM##Failed##jinesh4ever@inapp.com## ##null
+56####forgotpassword##Password sent to your mail id##1##05:00:26 AM##Success##jinesh@inapp.com##fname bbbbb##null
+141####forgotpassword##Password sent to your mail id##1##05:02:27 AM##Success##jinesh4ever@gmail.com##Jinesh George##null
+141####login##reset password##2##05:48:06 AM##Success##jinesh4ever@gmail.com##Jinesh George##null

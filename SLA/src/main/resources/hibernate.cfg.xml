@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+  
+<hibernate-configuration>
+	    <session-factory>
+			<mapping class="com.inapp.cms.entity.UserEntity" />
+			<mapping class="com.inapp.cms.entity.FarmEntity" />
+			<mapping class="com.inapp.cms.entity.CattleEntity" />
+			<mapping class="com.inapp.cms.entity.CattleImageEntity" />
+			<mapping class="com.inapp.cms.entity.RoleEntity" />
+			<mapping class="com.inapp.cms.entity.OwnerEntity" />
+			<mapping class="com.inapp.cms.entity.VetEntity" />
+			<mapping class="com.inapp.cms.entity.VaccinationEntity" />
+			<mapping class="com.inapp.cms.entity.FarmOwnerLinkEntity" />
+			<mapping class="com.inapp.cms.entity.HealthCareEntity" />
+			<mapping class="com.inapp.cms.entity.HealthcareVaccLinkEntity" />
+			<mapping class="com.inapp.cms.entity.BreedingEntity" />
+			<mapping class="com.inapp.cms.entity.BreedKidsEntity" />
+			<mapping class="com.inapp.cms.entity.FarmVetLinkEntity" />
+			<mapping class="com.inapp.cms.entity.MilkProductionEntity" />
+			<mapping class="com.inapp.cms.entity.SurgeryIllnessEntity" />
+			<mapping class="com.inapp.cms.entity.SurgeryIllnessDetailEntity" />
+			<!-- <mapping class="com.inapp.cms.entity.CattleImageTempEntity" />
+			<mapping class="com.inapp.cms.entity.FarmOwnerLinkTempEntity" />
+	        <mapping class="com.inapp.cms.entity.FarmVetLinkTempEntity" />
+	        <mapping class="com.inapp.cms.entity.SurgeryIllnessDetailTempEntity" /> -->
+	        <mapping class="com.inapp.cms.entity.ReportEntity" />
+	        <mapping class="com.inapp.cms.entity.SurgeryMasterEntity"/>
+    </session-factory>
+</hibernate-configuration>

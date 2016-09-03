@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="../common/images/favicon.ico">
+<title>Goat Management System</title>
+
+<!-- Bootstrap core CSS -->
+<link href="../common/css/bootstrap.min.css" rel="stylesheet">
+<link href="../common/css/font-awesome.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="css/style.css" rel="stylesheet">
+<link href="../common/css/com-style.css" rel="stylesheet">
+<link href="css/color.css" rel="stylesheet">
+<link href="css/theme.css" rel="stylesheet">
+
+<link rel="stylesheet" href="../common/css/CustomScrollbar.css">
+<link rel="stylesheet" href="../common/js/lib/chosen/chosen.min.css">
+
+<link rel="stylesheet" type="text/css" href="../common/css/dataTables.bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../common/js/lib/bootstrap-datepicker/css/datepicker.css">
+
+
+
+
+
+
+<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+<!--[if lt IE 9]><script src="../common/js/ie8-responsive-file-warning.js"></script><![endif]-->
+<script src="../common/js/ie-emulation-modes-warning.js"></script>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<!-- Initializing Context path -->
+<script type="text/javascript">
+	var contextPath="";
+</script>
+
+</head>
+
+<body>
+<div class="overlay"></div>
+<div class="common-loader">
+<div class="loader-wrap text-center">
+<div id="fadingBarsG">
+<div id="fadingBarsG_1" class="fadingBarsG">
+</div>
+<div id="fadingBarsG_2" class="fadingBarsG">
+</div>
+<div id="fadingBarsG_3" class="fadingBarsG">
+</div>
+<div id="fadingBarsG_4" class="fadingBarsG">
+</div>
+<div id="fadingBarsG_5" class="fadingBarsG">
+</div>
+<div id="fadingBarsG_6" class="fadingBarsG">
+</div>
+<div id="fadingBarsG_7" class="fadingBarsG">
+</div>
+<div id="fadingBarsG_8" class="fadingBarsG">
+</div>
+</div>
+
+</div>
+<span>processing data ...</span>
+</div>
+  <div class="alert alert-danger" id="cmscommonMsg" ></div>
+  
+<nav class="navbar my-nav navbar-default  my-nav navbar-static-top marginT5">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><img src="../common/images/cattle-logo-sm.png"alt="logo"></a> </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right green">
+        <li><a href="#"><i class="fa fa-home fa-2x"></i></a></li>
+        <li>
+          <div class="user-name pull-left white" id="ownerUserName">Welcome Owner</div>
+          <div class="user-pic pull-left max-width "><img src="images/dr.jpg" alt="dr image"></div>
+        </li>
+        <li id="cmsOwnerLogout"><a href="#"><i class="fa fa-sign-out fa-2x"></i></a></li>
+      </ul>
+    </div>
+    <!--/.nav-collapse --> 
+  </div>
+</nav>
+
+
+<div class="content-outer">
+<div class="full-wrapper">
+  <div class="owner-dashboard-box text-center">
+  
+        
+      
+
+       
+  <!--  owner   dashboard  -->
+<div class="container dash_height" id="owner-dashboard">
+<div class="row text-center" id="ownerDashboardIcons">
+	<div class="col-sm-8 col-md-8 col-xs-12 padding-zero">
+    <a href="#farm-details">
+    	<div class="col-md-4 col-xs-6 darker-green color-blocks relative inpageicon" data-page-url='farm-details'>
+        	<div class="icons">
+                <div class="icon-block">
+                	<div class="dash-icons dash-farm-icon"></div>
+                </div>
+                <div class="icon-text">
+                	<h3>Farm Details</h3>
+                </div>
+            </div>
+        </div>
+        </a>
+        <a href="#cattle-details">
+        <div class="col-md-4 col-xs-6 light-green color-blocks relative inpageicon" data-page-url=''>
+        <div class="icons">
+                <div class="icon-block">
+                	<div class="dash-icons dash-cattle-icon"></div>
+                </div>
+                <div class="icon-text">
+                	<h3>Goat Details</h3>
+                </div>
+            </div>
+        </div>
+        </a>
+         <a href="#health-care">
+        <div class="col-md-4 col-xs-6 lighter-green color-blocks relative inpageicon" data-page-url=''>
+        <div class="icons">
+                <div class="icon-block">
+                	<div class="dash-icons dash-health-icon"></div>
+                </div>
+                <div class="icon-text">
+                	<h3>Health Care</h3>
+                </div>
+            </div>
+        </div>
+        </a>
+         <a href="#breeding-details">
+        <div class="col-md-4 col-xs-6 lighter-green color-blocks relative inpageicon" data-page-url=''>
+        <div class="icons">
+                <div class="icon-block">
+                	<div class="dash-icons dash-breeding-icon"></div>
+                </div>
+                <div class="icon-text">
+                	<h3>Breeding Details</h3>
+                </div>
+            </div>
+        </div>
+        <a href="#profile">
+        <div class="col-md-4 col-xs-6 dark-green color-blocks relative inpageicon" data-page-url=''>
+        
+        <div class="icons">
+                <div class="icon-block">
+                	<div class="dash-icons dash-profile-icon"></div>
+                </div>
+                <div class="icon-text">
+                	<h3>Profile</h3>
+                </div>
+            </div></div>
+        </a>
+        <a href="#milk-production-list">
+        <div class="col-md-4 col-xs-6 darker-green color-blocks relative inpageicon" data-page-url=''>
+        <div class="icons">
+                <div class="icon-block">
+                	<div class="dash-icons dash-milk-icon"></div>
+                </div>
+                <div class="icon-text">
+                	<h3>Milk Production</h3>
+                </div>
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="col-sm-4 col-md-4 col-xs-12">
+    <a href="#goat-reports">
+    	<div class="col-sm-12 reports-menu dark-green auto-height relative inpageicon " data-page-url=''>
+        	<div class="icons">
+                <div class="icon-block">
+                	<div class="dash-icons dash-report-icon"></div>
+                </div>
+                <div class="icon-text">
+                	<h3>Reports  </h3>
+                	<p>Goat Details</p>
+                    <p>Milk Production (Daily/Monthly/Annually)</p>
+                    
+                </div>
+            </div>
+        </div>
+        </a>
+    </div>
+</div>
+</div>
+  <!--  owner   dashboard  -->
+    <!--  owner   inner page   -->
+    
+    
+    
+    
+<div class="container padding-zero hidden text-left" id="owner-inner-page">
+
+
+  <div class="col-md-3 col-sm-3 col-xs-12 padding-zero">
+    <div class="nav-side-menu">
+      <div class="brand"><img src="images/cattle-logo.png" alt="logo" class="hidden-xs"> <span class="block hidden-xs">Goat Management System</span> </div>
+      <i class="fa fa-outdent fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+      <div class="menu-list">
+        <ul id="menu-content" class="menu-content collapse out owner-side-menu">
+        
+          <li  data-toggle="collapse" data-target="#farm-details" class="owner-main-nav collapsed active">
+           <a href="javascript:void(0)">Farm Details<span class="arrow"></span></a> 
+           </li>
+          <ul class="owner-sub-nav sub-menu collapse" id="farm-details" data-page-url="farm-details">
+            <li  data-sub-page="farm-details"><!-- <a href="javascript:void(0)"> -->Farm List<!-- </a> --></li>
+          </ul>
+          <li data-toggle="collapse" data-target="#cattle-details" class="owner-main-nav collapsed"> 
+          <a href="javascript:void(0)">Goat Details<span class="arrow"></span></a> </li>
+          <ul class="owner-sub-nav sub-menu collapse" id="cattle-details">
+            <li class='link-active' data-sub-page="cattle-details">Goat List</li>
+            <li data-sub-page="add-cattle">Add Goat</li>
+          </ul>
+          
+          <li data-toggle="collapse" data-target="#health-care" class="owner-main-nav collapsed"> 
+          <a href="javascript:void(0)">Health Care<span class="arrow"></span></a> </li>
+          <ul class="owner-sub-nav sub-menu collapse" id="health-care">
+            <li data-sub-page="health-care">Health Care List</li>
+             <!-- <li data-sub-page="surgery-list">Surgery List</li> -->
+            </ul>
+          <li data-toggle="collapse" data-target="#breeding-details" class="owner-main-nav collapsed">
+           <a href="javascript:void(0)">Breeding Details<span class="arrow"></span></a> </li>
+          <ul class="owner-sub-nav sub-menu collapse" id="breeding-details">
+            <li  data-sub-page="breeding-details">Breeding List</li>
+            <li  data-sub-page="add-breeding">Add Breeding</li>
+          </ul>
+          
+          <li data-toggle="collapse" data-target="#profile" class="owner-main-nav collapsed">
+           <a href="javascript:void(0)">Profile<span class="arrow"></span></a> </li>
+          <ul class="owner-sub-nav sub-menu collapse" id="profile">
+            <li data-sub-page="profile">Profile Details</li>     
+           <!--   <li data-sub-page="change-password">Change Password</li>     -->    
+          </ul>
+          
+          <li data-toggle="collapse" data-target="#milk-production-list" class="owner-main-nav collapsed"> 
+          <a href="javascript:void(0)">Milk Production<span class="arrow"></span></a> </li>
+          <ul class="owner-sub-nav sub-menu collapse" id="milk-production">
+          	  <li  data-sub-page="milk-production-list">Milk Production List </li>   
+              <li  data-sub-page="milk-production">Add Milk Production</li> 
+          </ul>
+      
+         <li data-toggle="collapse" data-target="#goat-reports" class="owner-main-nav collapsed"> 
+          <a href="javascript:void(0)">Reports <span class="arrow"></span></a> </li>
+          <ul class="owner-sub-nav sub-menu collapse" id="goat-reports">
+            <li data-sub-page="goat-reports">Goat Report</li>
+            <li data-sub-page="milk-reports">Milk Production Report</li>
+            
+            
+            
+
+          </ul>
+          
+         </div>
+    </div>
+  </div>
+  
+  <div class="col-md-9 col-sm-9 col-xs-12 blurred-bg padding-zero">
+    <div class="col-sm-12">
+      <ol class="breadcrumb">
+        <li><a href="#">Dashboard</a></li>
+        <li id="breadcrumb-subpage">Farm Details</li>
+      </ol>
+    </div>
+             <div id="saveMsg"></div>
+                 <div id="subPageMsg"></div>
+    <!-- comming soon page starts here  -->	
+     <div class="col-sm-12 max-width subPageContent hidden"  id="cms-coming-soon">
+    	<img src="../common/images/Coming_Soon.png" alt="coming soon" />
+     </div>	  
+    <!-- comming soon page ends here  -->	     
+	
+	<!-- Farm details listing page starts here  -->	
+	<div id="farms-dtTableHolder" class="subPageContent" data-load-status="false"></div>		
+   	<!-- Farm details listing page ends here  -->	
+   	
+   <!-- Cattle details listing page starts here  -->	
+	<div id="cattle-dtTableHolder" class="subPageContent"  data-load-status="false"></div>
+   	<!-- Cattle details listing page ends here  -->	
+   	
+   <!-- Add Cattle details page starts here  -->	
+	<div id="add-cattle-details" class="subPageContent " data-load-status="false"></div>
+   <!-- Add Cattle details page ends here  -->
+   <!-- View Cattle details page starts here  -->
+  	<div id="view-cattle-details" class="subPageContent" data-load-status="false"></div>
+  	
+  	<!-- Breading details page starts here  -->
+  	<div id="breading-details" class="subPageContent" data-load-status="false"></div>
+  	
+  	 <!-- Add Breading details page starts here  -->
+  	<div id="add-breading" class="subPageContent" data-load-status="false"></div>
+  	 <!-- view Breading details page starts here  -->
+  	<div id="view-breading-details" class="subPageContent" data-load-status="false"></div>
+  	
+  	<!-- View User Profile -->
+  	<div id="view-user-profile" class="subPageContent" data-load-status="false"></div>
+  	
+  	<!-- Milk Production Details -->
+  	<div id="add-milk-data" class="subPageContent" data-load-status="false"></div> 
+  	<div id="owner-milkList-holder" class="subPageContent" data-load-status="false"></div> 
+  	
+  	<!-- Read only view for milk production list -->
+  	<div id="view-milkList-holder" class="subPageContent" data-load-status="false"></div> 
+  	
+  	<!-- Change Password User -->
+  	<div id="owner-change-password" class="subPageContent" data-load-status="false"></div>
+  	
+  	<!-- Healthcare details  -->
+  	<div id="cms-healthcare-details" class="subPageContent" data-load-status="false"></div>
+  	<div id="cms-view-healthcare-details" class="subPageContent" data-load-status="false"></div>
+  	<div id="cms-surgery-details" class="subPageContent" data-load-status="false"></div>
+   
+   
+   <!-- Reports start here -->
+   <div id="view-milk-report" class="subPageContent" data-load-status="false"></div>
+   <div id="view-goat-report" class="subPageContent" data-load-status="false"></div>
+
+
+   
+   </div>
+   			
+    
+    
+  </div>
+   </div>
+  
+  
+  
+</div>
+    
+    
+    
+       <!--  owner   inner page   -->
+  
+  
+    
+  </div>
+</div>
+<div class="clearfix"></div>
+
+
+<div class="modal cstyle fade" id="CommingSoonModal" tabindex="-1" role="dialog" aria-labelledby="ForgotLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+		<h3>Coming Soon</h3>
+		<!-- <div><img src="common/images/Coming_Soon.jpg" alt="logo"/></div> -->
+        </div>
+      </div>
+      <div class="modal-footer">
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<footer class="footer text-center white">
+    <p>© 2015 Diomedes Kastanis - All Rights Reserved</p>
+</footer>
+
+<div id="breeding-add-kid-modal" data-load-status="false"></div> 
+
+<!-- Bootstrap core JavaScript
+    ================================================== --> 
+<!-- Placed at the end of the document so the pages load faster --> 
+<script src="../common/js/jquery.min.js"></script> 
+<script src="../common/js/bootstrap.min.js"></script> 
+
+ <script src="../common/js/lib/chosen/chosen.jquery.min.js"></script>
+<script src="../common/js/lib/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug --> 
+<script src="../common/js/ie10-viewport-bug-workaround.js"></script>
+
+<script type="text/javascript" language="javascript" src="../common/js/CustomScrollbar.min.js"></script>
+<script type="text/javascript" language="javascript" src="../common/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="../common/js/dataTables.bootstrap.min.js"></script>
+
+<!-- polyfill is added for html5 validation in safri and IE -->
+<script src="../common/js/lib/polyfiller-shims/polyfiller.js"></script>
+
+
+<!-- CMS scripts  -->
+<script src="js/scripts.js"></script>
+<script src="../common/js/cms-com.js"></script>
+<script src="../common/js/cms-storage.js"></script> 
+<script src="js/cms-owner-cons.js"></script>
+<script src="js/owner-healthcare.js"></script>
+<script src="js/owner-profile.js"></script>
+<script src="js/owner-cattle.js"></script>
+<script src="js/owner-breeding.js"></script>
+<script src="js/owner-farm.js"></script>
+<script src="js/cms-owner.js"></script>
+<script src="js/owner-milk-production.js"></script>
+<script src="js/owner-changePassword.js"></script>
+<script src="js/owner-surgery.js"></script>
+<script src="js/milk-report.js"></script>
+<script src="js/goat-report.js"></script>
+
+
+
+</body>
+</html>

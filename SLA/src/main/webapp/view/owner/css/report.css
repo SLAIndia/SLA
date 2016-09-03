@@ -1,0 +1,46 @@
+.report-table{
+	background:#fff;
+	padding:15px;
+}
+.report-table .dataTables_length{
+	display: block !important;
+}
+.report-table table th{
+	background:#fff;
+	color:#301E0A;
+	font-weight:bold;
+	border-bottom:1px solid #ddd !important;
+	border-top:1px solid #ddd !important;
+}
+.report-table table td{
+	background:#fff;
+	border:none !important;
+}
+.report-table h1{
+	text-align:center;
+	color:#7A7A7A;
+}
+.report-button-wrap{
+	text-align:center;
+}
+.report-btn{
+	border:none;
+	padding:3px 10px;
+	color:#fff;
+}
+.report-btn.print{
+	background:#341F0A;
+}
+.report-btn.export{
+	background:#01B828;
+}
+.report-top-ico-warp{
+	text-align:center;
+}
+.report-top-ico{
+	background: url(../images/dash-sprite.png) no-repeat;
+	background-position: -103px -200px;
+	width:100px;
+	height:90px;
+	display:inline-block;
+}

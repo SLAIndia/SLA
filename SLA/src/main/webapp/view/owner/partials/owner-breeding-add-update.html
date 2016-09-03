@@ -1,0 +1,159 @@
+	<section class='inner-cont-sec' id="cms-add-cattle"  class="hidden">
+        <div class="col-lg-12">
+        <div class="pull-right"> <a class="btn btn-default" href="javascript:void(0)" onclick="window.history.back();"> <i class="fa fa-arrow-circle-o-left"></i> Back</a> </div>
+       <h2 id="cmsBreedingDetailsSaveTitle">Add Breeding</h2>
+
+       </div>
+	<div class="block">
+		<div class="col-sm-12">          
+  		<form id="cms-saveBreedingDtls-form" method="post"  autocomplete="off">
+            
+    	<div class="form-group">
+	        <div class="col-md-3"><label for="breedingdate">Date of Breeding <span class="red">*</span></label></div>
+	        <div class="col-md-6">
+	        <div class="input-group">
+	        <input type="text"  class="my-control form-dt-date" name="breedingdate" id="breedingdate" placeholder="Enter Date of Breeding" maxlength='30'  >
+	        <span class="input-group-addon" id="breedingdate-calen"><i class="fa fa-calendar"></i></span>
+	        </div>
+	        </div>
+	        <div class="col-md-3 red cms-ipt-error" id="ipt-er-breedingdate"><small>*Enter Date of Breeding</small></div>
+	      </div> 
+	      
+	      <div class="form-group"> 
+		    <div class="col-md-3">
+		    	<label> Ear Tag of Doe  <span class="red">*</span></label>     
+		     </div>
+	    	 <div class="col-md-6">
+	     		<select data-placeholder="Select a Ear Tag of Doe " class="form-control chzn-select form-dt" name="breedingdoeid" tabindex="2" id="breedingdoeid">
+	             <option value=""></option>
+	         </select>     
+	         </div>   
+	          <div class="col-md-3 red cms-ipt-error" id="ipt-er-breedingdoeid"><small>*Select  Ear Tag of Doe  </small></div>             
+	     </div>  
+	     
+	      <div class="form-group"> 
+		    <div class="col-md-3">
+		    <label> Ear Tag of Buck  <span class="red">*</span></label>     
+		     </div>
+	    	<div class="col-md-6">
+	     		<select data-placeholder="Select a  Ear Tag of Buck  " class="form-control chzn-select form-dt" name="breedingbuckid" tabindex="2" id="breedingbuckid">
+	             <option value=""></option>
+	         </select>     
+	         </div>   
+	          <div class="col-md-3 red cms-ipt-error" id="ipt-er-breedingbuckid"><small>*Select Ear Tag of Buck</small></div>             
+	     </div>  
+	       
+	    
+	       
+	     <div class="form-group">
+	     	<div class="col-md-3"><label for="breedinglactstartdt">Start of Lactation </label></div>
+	       <div class="col-md-6">
+	       <div class="input-group">
+	       <input type="text"  pattern=".*\S+.*"  class="my-control form-dt-date" name="breedinglactstartdt" id="breedinglactstartdt" placeholder="Enter Start of Lactation" maxlength='30' >
+	         <span class="input-group-addon" id="breedinglactstartdt-calen"><i class="fa fa-calendar"></i></span>
+	       </div> 
+	       </div> 
+	    	<div class="col-md-3 red cms-ipt-error" id="ipt-er-breedinglactstartdt"><small>*Enter </small></div>
+	     </div> 
+	     
+	    <div class="form-group">
+	     	<div class="col-md-3"><label for="breedinglactenddt">End of Lactation </label></div>
+	       <div class="col-md-6">
+	       <div class="input-group">
+	       <input type="text"  pattern=".*\S+.*"  class="my-control form-dt-date" name="breedinglactenddt" id="breedinglactenddt" placeholder="Enter End of Lactation" maxlength='30' >
+	         <span class="input-group-addon" id="breedinglactenddt-calen"><i class="fa fa-calendar"></i></span>
+	       </div> 
+	       </div> 
+	    	<div class="col-md-3 red cms-ipt-error"><small>*Enter </small></div>
+	     </div>        
+	         
+
+	              
+	      <div class="form-group">
+	        <div class="col-md-3"><label for="breedingaborted_dt">Date of Abortion</label></div>
+	        <div class="col-md-6">
+	        <div class="input-group">
+	        <input type="text"  class="my-control form-dt-date" name="breedingaborted_dt" id="breedingaborted_dt" placeholder="Enter Date of Abortion" maxlength='30'  >
+	         <span class="input-group-addon" id="breedingaborted_dt-calen"><i class="fa fa-calendar"></i></span>
+	        </div>
+	         </div>
+	        <div class="col-md-3 red cms-ipt-error"><small>*Enter Date of Breeding</small></div>
+	      </div> 
+	     <div class="form-group">
+	     	<div class="col-md-3"><label for="breedingabortedno">No of Aborted Kids </label></div>
+	       <div class="col-md-6"><input type="text"   class="my-control form-dt-num nu-only" name="breedingabortedno" id="breedingabortedno" placeholder="Enter No of Aborted Kids" maxlength='5'>
+	      
+	       </div> 
+	    	<div class="col-md-3 red cms-ipt-error"><small>*Enter </small></div>
+	     </div>
+	      <div class="form-group">
+	     	<div class="col-md-3"><label for="breedingkidsno">No of Kids </label></div>
+	       <div class="col-md-6"><input type="text"   class="my-control form-dt-num nu-only" name="breedingkidsno" id="breedingkidsno" placeholder="Enter Kids" maxlength='5' readonly="readonly"></div> 
+	    	<div class="col-md-3 red cms-ipt-error"><small>*Enter </small></div>
+	     </div>
+	   
+			 	
+			<div class="clearfix"></div>
+            <div class="col-md-12">
+              
+            	<input type="hidden" class="form-dt" name="createddt" value="0" id="breedingcreateddt" /> 
+            	<input type="hidden"  name="breedingid" value="0" id="breedingid" /> 
+            	<input type="hidden" class="form-dt"  name="uniquesynckey" value="0" id="breed-uniquesynckey" /> 
+              	<input type="submit" class="btn btn-success grey-btn " value="Save" id="cms-saveBreedingDtlsBtn"/>
+                <input type="button" class="btn btn-default  " value="Reset"  id="cms-resetBreedingDtlsBtn"/>
+                <input type="button" class="btn btn-success grey-btn hidden" value="Add Kid" id="cms-breedingaddKidsBtn"/>
+             <input type="hidden"  name="breedingCattleleastDob" value="0" id="breedingCattleleastDob" /> 
+            </div>  
+        		
+        </form>
+        
+<!-- Kids Details starts here  -->
+<div id="breedingKidsDataTableHolder" class="hidden">
+
+<div class="col-sm-12">
+    <h3>Kids Details</h3>
+</div>     
+ <div class="col-sm-12 owner-farm"  >
+	<table cellpadding="0" cellspacing="0" border="0" class="table table-striped owner-farm " id="breedingKidsDataTable">
+	 <thead>
+		<tr>
+			<th>Breeding Id</th>
+			<th>Ear Tag Id</th>
+			<th>Weight</th>
+			<th>Gender</th>
+			
+			<th>Date Of  Birth</th>
+			<th>Date Of Weaning</th>
+
+			<th>Action</th>
+			
+			</tr>
+		</thead>			
+		<tbody>
+		
+		</tbody>				
+	</table>     
+</div>
+</div>
+<!-- Kids Details ends here  -->
+        
+        
+        
+        
+		</div>
+	</div>        
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

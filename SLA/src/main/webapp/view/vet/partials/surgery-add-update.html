@@ -1,0 +1,282 @@
+<div class="col-lg-12">
+<div class="pull-right"> <a class="btn btn-default" href="javascript:void(0)" onclick="window.history.back();"> <i class="fa fa-arrow-circle-o-left"></i> Back</a> </div>
+	<h2 id="cmsSurgeryTitle">Illness and Surgery Details</h2>
+</div>
+<div class="block marginT15">
+	<div class="col-sm-12">
+		<form id="cms-saveSurgey-form" method="post" autocomplete="off">
+
+			<section>
+			<div class="row">
+				<div class="col-md-6">
+						<div class="form-group">
+							<div class="col-md-4 padding-zero">
+								<label for="vaccinationexpdt"> Date of Procedure <span
+									class="red">*</span></label>
+							</div>
+							<div class="col-md-8">
+							<div class="input-group">
+								<input type="text" class="my-control form-dt"
+									name="surgillprocdt" id="surgillprocdt"
+									placeholder="Enter Date" maxlength='30' readonly="readonly">
+									<span class="input-group-addon" id="surgillprocdt-calen"><i class="fa fa-calendar"></i></span>
+							</div>
+							</div>
+							<div class="col-md-12 red cms-ipt-error">
+								<small>*Enter Date</small>
+							</div>
+						</div>
+					</div>
+			</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<div class="col-md-4 padding-zero">
+								<label>Farm<span
+									class="red">*</span></label>
+							</div>
+							<div class="col-md-8">
+								<select data-placeholder="Select a Farm "
+									class="form-control form-dt-refer" data-refer="farm"
+									data-field="farmid" name="farmid" tabindex="2"
+									id="farmselectid">
+									<option value=""></option>
+								</select>
+							</div>
+							<div class="col-md-12 red cms-ipt-error">
+								<small>*Enter </small>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<div class="col-md-4 padding-zero">
+								<label>Goat<span
+									class="red">*</span></label>
+							</div>
+							<div class="col-md-8">
+								<select data-placeholder="Select a Goat "
+									class="form-control form-dt-refer" data-refer="cattle"
+									data-field="cattleid" name="cattleid" tabindex="2"
+									id="cattleSelectid">
+									<option value=""></option>
+								</select>
+							</div>
+							<div class="col-md-12 red cms-ipt-error" id="ip-error-cattleid">
+								<small>*Enter </small>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<div class="col-md-4 padding-zero">
+								<label for="vaccinationexpdt"> Consulted by<span
+									class="red">*</span></label>
+							</div>
+							<div class="col-md-3">
+								<div class="radio">
+									<label><input type="radio" class="form-dt-radio consultant"
+										name="consultant" value="0" checked>Myself</label>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="radio">
+									<label><input type="radio" class="form-dt-radio consultant"
+										name="consultant" value="1">Others</label>
+								</div>
+							</div>
+							<div class="col-md-3 red cms-ipt-error">
+								<small>*</small>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 " id="vetDiv">
+						<div class="form-group">
+							<div class="col-md-4 padding-zero">
+								<label>Select Vet<span
+									class="red">*</span></label>
+							</div>
+							<div class="col-md-8">
+								<select data-placeholder="Select a Vet "
+									class="form-control form-dt-refer" data-refer="vet"
+									data-field="vetid" name="vetid" tabindex="2"
+									id="selectvetid">
+									<option value=""></option>
+								</select>
+							</div>
+							<div class="col-md-12 red cms-ipt-error" id="ip-error-vetid">
+								<small>*Enter </small>
+							</div>
+						</div>
+					</div>
+						
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<div class="col-md-4 padding-zero">
+								<label for="weight">Weight<span class="red">*</span></label>
+							</div>
+							<div class="col-md-8">
+								<input type="text" pattern="^[1-9]\d*(\.\d+)?$" class="my-control form-dt-num float-only"
+									name="surgillweight" id="surgillweight"
+									placeholder="Enter  weight" maxlength='10'>
+							</div>
+
+							<div class="col-md-12 red cms-ipt-error" id="ip-error-weight">
+								<small>*</small>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<div class="col-md-4 padding-zero">
+								<label for="weight">Temperature<span class="red">*</span></label>
+							</div>
+							<div class="col-md-8">
+								<input type="text" pattern="^[1-9]\d*(\.\d+)?$" class="my-control form-dt-num float-only"
+									name="surgilltemp" id="surgilltemp"
+									placeholder="Enter Temperature in Celcius" maxlength='10'>
+							</div>
+
+							<div class="col-md-12 red cms-ipt-error" id="ip-error-temp">
+								<small>*</small>
+							</div>
+						</div>
+					
+					
+					</div>
+						
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+					<div class="form-group">
+							<div class="col-md-4 padding-zero">
+								<label for="weight">Surgery Required</label>
+							</div>
+							<div class="col-md-4">
+								<div class="checker-wrap pull-left">
+									<input type="checkbox"  class="my-control  form-dt-chk" name="surgRequired"
+									id="surgRequired" />
+								</div>
+							</div>
+
+							<div class="col-md-12 red cms-ipt-error">
+								<small>*</small>
+							</div>
+						</div>
+					
+					
+					</div>
+					<div class="col-md-6" id="surgerytypeDiv">
+					<div class="form-group">
+							<div class="col-md-4 padding-zero">
+								<label>Type of Surgery<span class="red">*</span></label>
+							</div>
+							<div class="col-md-8">
+								<select data-placeholder="Select Surgery "
+									class="form-control form-dt-refer" data-refer="surgery"
+									data-field="surgeryid" name="surgillsurgeryid" tabindex="2"
+									id="addsurgerytype">
+									<option value=""></option>
+								</select>
+							</div>
+							<div class="col-md-12 red cms-ipt-error" id="ip-error-surgType">
+								<small>*Enter </small>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+					<div class="form-group">
+							<div class="col-md-4 padding-zero">
+								<label for="weight">Symptoms</label>
+							</div>
+							<div class="col-md-8">
+								<textarea class="my-control  form-dt" name="surgillsymp"
+									id="surgillsymp" rows="3" maxlength='250'></textarea>
+							</div>
+
+							<div class="col-md-12 red cms-ipt-error">
+								<small>*</small>
+							</div>
+						</div>
+					
+					
+					</div>
+					<div class="col-md-6">
+					<div class="form-group">
+							<div class="col-md-4 padding-zero">
+								<label for="weight">Assessment</label>
+							</div>
+							<div class="col-md-8">
+								<textarea class="my-control  form-dt" name="surgillassess"
+									id="surgillassess" rows="3" maxlength='250'></textarea>
+							</div>
+
+							<div class="col-md-12 red cms-ipt-error">
+								<small>*</small>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-12">
+						<input type="button" class="btn btn-primary" value="Add Treatment Details"
+							id="addTreatment">
+					</div>
+				</div>
+				
+				<div id="treatmentDataTableHolder" class="hidden">
+						<div class="row">
+						<div class="col-sm-12">
+						    <h3>Treatment Details</h3>
+						</div> 
+						</div> 
+						<div class="row">    
+						 <div class="col-sm-12 owner-farm"  >
+							<table cellpadding="0" cellspacing="0" border="0" class="table table-striped " id="treatmentDataTable">
+							 <thead>
+								<tr>
+									<th>Name</th>
+									<th>Dose</th>
+									<th>Unit</th>
+									<th>Details</th>
+									<th>Action</th>
+									</tr>
+								</thead>			
+								<tbody>
+								
+								</tbody>				
+							</table>     
+						</div>
+						</div> 
+						</div>
+			</section>
+
+
+			<div class="clearfix"></div>
+			<div class="row">
+			<div class="col-md-12 marginT15">
+				<input type="hidden" name="surgillid" value="0"
+					id="surgillid" />
+					<input type="hidden" name="tmpCattleId" value="0"
+					id="tmpCattleId" />
+					<input type="hidden" name="tmpProcDt" value="0"
+					id="tmpProcDt" />
+					<input type="hidden" class="" name="createddt" value="0" id="surgery-createddt" />
+					<input type="submit"
+					class="btn btn-success grey-btn " value="Save"
+					id="cms-saveSurgeryBtn" /> <input type="reset"
+					class="btn btn-default  " value="Reset"
+					id="cms-resetSurgeryBtn" />
+			</div>
+			</div>
+		</form>
+	</div>
+</div>
