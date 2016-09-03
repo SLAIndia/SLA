@@ -1,4 +1,4 @@
-package com.inapp.cms.utils;
+package com.app.utils;
 
 public class ServiceConstants {
 	

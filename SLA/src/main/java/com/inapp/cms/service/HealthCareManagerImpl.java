@@ -6,11 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.utils.ServiceConstants;
 import com.inapp.cms.dao.HealthCareDAO;
 import com.inapp.cms.entity.BreedKidsEntity;
 import com.inapp.cms.entity.HealthCareEntity;
 import com.inapp.cms.entity.HealthcareVaccLinkEntity;
-import com.inapp.cms.utils.ServiceConstants;
 
 @Service(ServiceConstants.HEALTHCARE_MANAGER)
 public class HealthCareManagerImpl implements HealthCareManager{

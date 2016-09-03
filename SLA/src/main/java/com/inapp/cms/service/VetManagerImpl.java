@@ -7,11 +7,10 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import com.app.utils.ServiceConstants;
 import com.inapp.cms.dao.VetDAO;
 import com.inapp.cms.entity.UserEntity;
 import com.inapp.cms.entity.VetEntity;
-import com.inapp.cms.utils.ServiceConstants;
 
 @Service(ServiceConstants.VET_MANAGER)
 public class VetManagerImpl implements VetManager {

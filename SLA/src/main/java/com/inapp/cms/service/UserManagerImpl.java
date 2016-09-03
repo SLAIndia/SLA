@@ -14,13 +14,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.utils.Common;
+import com.app.utils.MessageConstants;
+import com.app.utils.ServiceConstants;
 import com.google.gson.JsonArray;
 import com.inapp.cms.dao.UserDAO;
 import com.inapp.cms.entity.LoginEntity;
 import com.inapp.cms.entity.UserEntity;
-import com.inapp.cms.utils.Common;
-import com.inapp.cms.utils.MessageConstants;
-import com.inapp.cms.utils.ServiceConstants;
 /**
  * @author Jinesh George
  */

@@ -11,9 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.utils.Common;
+import com.app.utils.RepositoryConstants;
 import com.inapp.cms.entity.FarmEntity;
-import com.inapp.cms.utils.Common;
-import com.inapp.cms.utils.RepositoryConstants;
 
 @Repository(RepositoryConstants.FARM_DAO)
 public class FarmDAOImpl implements FarmDAO{

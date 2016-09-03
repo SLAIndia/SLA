@@ -4,10 +4,10 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.utils.ServiceConstants;
 import com.inapp.cms.dao.AdminUserDAO;
 import com.inapp.cms.entity.RoleEntity;
 import com.inapp.cms.entity.UserEntity;
-import com.inapp.cms.utils.ServiceConstants;
 
 @Service(ServiceConstants.ADMIN_MANAGER)
 public class AdminUserManagerImpl implements AdminUserManager {

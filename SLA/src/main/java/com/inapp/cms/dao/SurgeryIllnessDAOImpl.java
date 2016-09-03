@@ -11,10 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.utils.Common;
+import com.app.utils.RepositoryConstants;
 import com.inapp.cms.entity.SurgeryIllnessDetailEntity;
 import com.inapp.cms.entity.SurgeryIllnessEntity;
-import com.inapp.cms.utils.Common;
-import com.inapp.cms.utils.RepositoryConstants;
 
 @Repository(RepositoryConstants.SURGERY_DAO)
 public class SurgeryIllnessDAOImpl implements SurgeryIllnessDAO {

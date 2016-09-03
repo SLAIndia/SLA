@@ -9,10 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.utils.RepositoryConstants;
 import com.inapp.cms.entity.CattleEntity;
 import com.inapp.cms.entity.MilkProductionEntity;
 import com.inapp.cms.entity.ReportEntity;
-import com.inapp.cms.utils.RepositoryConstants;
 
 @Repository(RepositoryConstants.REPORT_DAO)
 public class ReportDAOImpl implements ReportDAO{

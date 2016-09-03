@@ -1,6 +1,0 @@
-0####login##check username##0##02:58:18 PM##Failed##
-0####login##check username##0##04:51:32 PM##Failed##
-56####login##wrong password##0##11:37:18 AM##Failed##jinesh@inapp.com##fname bbbbb##123
-56####login##wrong password##0##11:37:51 AM##Failed##jinesh@inapp.com##fname bbbbb##123
-56####Forgot Password##Password sent to your mail id##1##11:41:53 AM##Success##jinesh@inapp.com##fname bbbbb##123
-56####login##reset password##2##11:42:58 AM##Success##jinesh@inapp.com##fname bbbbb##123

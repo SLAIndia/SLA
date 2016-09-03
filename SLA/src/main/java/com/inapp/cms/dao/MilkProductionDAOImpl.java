@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.utils.RepositoryConstants;
 import com.inapp.cms.entity.BreedKidsEntity;
 import com.inapp.cms.entity.MilkProductionEntity;
-import com.inapp.cms.utils.RepositoryConstants;
 
 @Repository(RepositoryConstants.MILKPRODUCTION_DAO)
 public class MilkProductionDAOImpl implements MilkProductionDAO{

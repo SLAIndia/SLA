@@ -13,9 +13,10 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.app.utils.Common;
+import com.app.utils.RepositoryConstants;
 import com.inapp.cms.entity.SyncEntity;
-import com.inapp.cms.utils.Common;
-import com.inapp.cms.utils.RepositoryConstants;
 
 @Repository(RepositoryConstants.SYNC_DAO)
 public class SyncDAOImpl implements SyncDAO{

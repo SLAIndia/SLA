@@ -13,9 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.utils.RepositoryConstants;
 import com.inapp.cms.entity.LoginEntity;
 import com.inapp.cms.entity.UserEntity;
-import com.inapp.cms.utils.RepositoryConstants;
 
 /**
  * @author Jinesh George

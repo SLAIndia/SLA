@@ -15,6 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.app.utils.Common;
+import com.app.utils.DateDeserializer;
+import com.app.utils.DateSerializer;
+import com.app.utils.EmailUser;
+import com.app.utils.HtmlReader;
+import com.app.utils.MessageConstants;
+import com.app.utils.RandomString;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.inapp.cms.entity.OwnerEntity;
@@ -23,13 +30,6 @@ import com.inapp.cms.entity.UserEntity;
 import com.inapp.cms.service.AdminUserManager;
 import com.inapp.cms.service.OwnerUserManager;
 import com.inapp.cms.service.UserManager;
-import com.inapp.cms.utils.Common;
-import com.inapp.cms.utils.DateDeserializer;
-import com.inapp.cms.utils.DateSerializer;
-import com.inapp.cms.utils.EmailUser;
-import com.inapp.cms.utils.HtmlReader;
-import com.inapp.cms.utils.MessageConstants;
-import com.inapp.cms.utils.RandomString;
 
 /**
  * This is a controller which will serve all request related to the user service

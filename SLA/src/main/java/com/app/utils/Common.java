@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package com.inapp.cms.utils;
+package com.app.utils;
 /**
  * @author Jinesh George
  */

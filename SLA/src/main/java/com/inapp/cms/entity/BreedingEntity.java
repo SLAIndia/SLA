@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import com.inapp.cms.utils.Common;
+import com.app.utils.Common;
 
 @Entity
 @Table(name = "breeding",schema = "farm")

@@ -19,6 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.app.utils.Common;
+import com.app.utils.EmailUser;
+import com.app.utils.MessageConstants;
+import com.app.utils.RandomString;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -29,10 +33,6 @@ import com.inapp.cms.entity.LoginEntity;
 import com.inapp.cms.entity.UserEntity;
 import com.inapp.cms.json.UserRegistrationJson;
 import com.inapp.cms.service.UserManager;
-import com.inapp.cms.utils.Common;
-import com.inapp.cms.utils.EmailUser;
-import com.inapp.cms.utils.MessageConstants;
-import com.inapp.cms.utils.RandomString;
 
 /**
  * @author Jinesh George

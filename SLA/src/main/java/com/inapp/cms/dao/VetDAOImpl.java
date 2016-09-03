@@ -11,14 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.utils.Common;
+import com.app.utils.RepositoryConstants;
 import com.inapp.cms.entity.FarmEntity;
 import com.inapp.cms.entity.FarmOwnerLinkEntity;
 import com.inapp.cms.entity.FarmVetLinkEntity;
 import com.inapp.cms.entity.UserEntity;
 import com.inapp.cms.entity.VetEntity;
 import com.inapp.cms.service.FarmManager;
-import com.inapp.cms.utils.Common;
-import com.inapp.cms.utils.RepositoryConstants;
 
 @Repository(RepositoryConstants.VET_DAO)
 public class VetDAOImpl implements VetDAO{

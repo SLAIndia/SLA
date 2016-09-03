@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.utils.RepositoryConstants;
 import com.inapp.cms.entity.VaccinationEntity;
-import com.inapp.cms.utils.RepositoryConstants;
 
 @Repository(RepositoryConstants.VACCINATION_DAO)
 public class VaccinationDAOImpl implements VaccinationDAO{

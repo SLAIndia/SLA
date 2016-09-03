@@ -7,9 +7,9 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.utils.ServiceConstants;
 import com.inapp.cms.dao.SyncDAO;
 import com.inapp.cms.entity.SyncEntity;
-import com.inapp.cms.utils.ServiceConstants;
 
 @Service(ServiceConstants.SYNC_MANAGER)
 public class SyncManagerImpl implements SyncManager{

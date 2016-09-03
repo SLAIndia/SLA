@@ -6,9 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.utils.ServiceConstants;
 import com.inapp.cms.dao.VaccinationDAO;
 import com.inapp.cms.entity.VaccinationEntity;
-import com.inapp.cms.utils.ServiceConstants;
 
 @Service(ServiceConstants.VACCINATION_MANAGER)
 public class VaccinationManagerImpl implements VaccinationManager{

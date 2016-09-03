@@ -6,10 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.utils.ServiceConstants;
 import com.inapp.cms.dao.BreedingDAO;
 import com.inapp.cms.entity.BreedKidsEntity;
 import com.inapp.cms.entity.BreedingEntity;
-import com.inapp.cms.utils.ServiceConstants;
 
 @Service(ServiceConstants.BREEDING_MANAGER)
 public class BreedingManagerImpl implements BreedingManager{

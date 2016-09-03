@@ -6,9 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.utils.ServiceConstants;
 import com.inapp.cms.dao.FarmDAO;
 import com.inapp.cms.entity.FarmEntity;
-import com.inapp.cms.utils.ServiceConstants;
 
 @Service(ServiceConstants.FARM_MANAGER)
 public class FarmManagerImpl implements FarmManager{

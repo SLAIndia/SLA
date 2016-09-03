@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.utils.ServiceConstants;
 import com.inapp.cms.dao.MilkProductionDAO;
 import com.inapp.cms.entity.BreedKidsEntity;
 import com.inapp.cms.entity.MilkProductionEntity;
-import com.inapp.cms.utils.ServiceConstants;
 
 @Service(ServiceConstants.MILKPRODUCTION_MANAGER)
 public class MilkProductionManagerImpl implements MilkProductionManager{

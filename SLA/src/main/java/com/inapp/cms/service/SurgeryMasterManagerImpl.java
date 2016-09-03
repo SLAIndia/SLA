@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.utils.ServiceConstants;
 import com.inapp.cms.dao.SurgeryMasterDAO;
 import com.inapp.cms.entity.SurgeryMasterEntity;
-import com.inapp.cms.utils.ServiceConstants;
 
 @Service(ServiceConstants.SUEGERYTYPE_MANAGER)
 public class SurgeryMasterManagerImpl implements SurgeryMasterManager{

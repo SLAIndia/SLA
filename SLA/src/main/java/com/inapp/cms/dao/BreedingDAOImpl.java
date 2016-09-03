@@ -11,10 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.utils.RepositoryConstants;
 import com.google.gson.Gson;
 import com.inapp.cms.entity.BreedKidsEntity;
 import com.inapp.cms.entity.BreedingEntity;
-import com.inapp.cms.utils.RepositoryConstants;
 
 @Repository(RepositoryConstants.BREEDING_DAO)
 public class BreedingDAOImpl implements BreedingDAO{

@@ -7,11 +7,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.app.utils.ServiceConstants;
 import com.inapp.cms.dao.CattleDAO;
 import com.inapp.cms.entity.CattleEntity;
 import com.inapp.cms.entity.CattleImageEntity;
 import com.inapp.cms.entity.FarmEntity;
-import com.inapp.cms.utils.ServiceConstants;
 
 @Service(ServiceConstants.CATTLE_MANAGER)
 public class CattleManagerImpl implements CattleManager {
