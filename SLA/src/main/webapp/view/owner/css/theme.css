@@ -1,5 +1,0 @@
-
-.nav li a, .breadcrumb a, .pagination > li > a, .pagination > li > span{color:#666}
-.breadcrumb a{color:#444; font-weight:bold;}
-.grey-btn, .current, table > thead > tr > th, .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover{background:#4a2d1d}
-.pagination > li > a, .pagination > li > span, .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover{border-color:#8e98a1}
