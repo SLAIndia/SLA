@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.handlers.Response;
+import com.app.handlers.AppResponse;
 
 @RestController
 @RequestMapping("/usermanagement")
@@ -17,8 +17,8 @@ public class UserController {
 			method = RequestMethod.GET,
 			produces = MediaType.APPLICATION_JSON_VALUE, consumes= MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public Response getusermanagements(@RequestBody String jsonRequestString) throws Exception {
-		Response response = new Response();
+	public AppResponse getusermanagements(@RequestBody String jsonRequestString) throws Exception {
+		AppResponse response = new AppResponse();
 		ObjectMapper mapper = new ObjectMapper();
 	//	pj = mapper.readValue(json, POJO.class);
 		response.put("data", "[]");

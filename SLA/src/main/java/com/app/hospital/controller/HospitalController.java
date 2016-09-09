@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.handlers.Response;
+import com.app.handlers.AppResponse;
 import com.app.usermanagement.dao.UserDaoImpl;
 
 @RestController
@@ -19,8 +19,8 @@ public class HospitalController {
 			method = RequestMethod.GET,
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public Response getHospitals() throws Exception {
-		Response response = new Response();
+	public AppResponse getHospitals() throws Exception {
+		AppResponse response = new AppResponse();
 		//ObjectMapper mapper = new ObjectMapper();
 		//UserDaoImpl pj = new UserDaoImpl();
 		//pj = mapper.readValue(jsonRequestString, UserDaoImpl.class);

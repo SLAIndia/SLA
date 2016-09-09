@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.handlers.Response;
+import com.app.handlers.AppResponse;
 import com.app.hospital.entity.SpecializationsEntity;
 import com.app.hospital.service.SpecializationsService;
 
@@ -23,8 +23,8 @@ public class SpecializationsController {
 	private SpecializationsService specializationsService;
 	@RequestMapping( value ="/getSpecializations",method = RequestMethod.POST,
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody Response getSpecializations() throws Exception {
-		Response response = new Response();
+	public @ResponseBody AppResponse getSpecializations() throws Exception {
+		AppResponse response = new AppResponse();
 		try {
 		ObjectMapper mapper = new ObjectMapper();
 		List<SpecializationsEntity> specializationsList = specializationsService.getSpecializations();
@@ -36,8 +36,8 @@ public class SpecializationsController {
 	}
 	
 	@RequestMapping(value ="/saveSpecializations",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody Response getSpecializations(@RequestBody String jsonRequestString) throws Exception {
-		Response response = new Response();
+	public @ResponseBody AppResponse getSpecializations(@RequestBody String jsonRequestString) throws Exception {
+		AppResponse response = new AppResponse();
 		try {
 		ObjectMapper mapper = new ObjectMapper();
 		SpecializationsEntity objSpecializations = new SpecializationsEntity();
@@ -51,8 +51,8 @@ public class SpecializationsController {
 	}
 	
 	@RequestMapping(value ="/deleteSpecializations",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody Response deleteSpecializations(@RequestBody String jsonRequestString) throws Exception {
-		Response response = new Response();
+	public @ResponseBody AppResponse deleteSpecializations(@RequestBody String jsonRequestString) throws Exception {
+		AppResponse response = new AppResponse();
 		try {
 		ObjectMapper mapper = new ObjectMapper();
 		SpecializationsEntity objSpecializations = new SpecializationsEntity();
