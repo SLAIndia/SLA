@@ -1,4 +1,4 @@
-package com.app.common;
+package com.app.handlers;
 
 import java.util.HashMap;
 public class Response extends HashMap<String, Object> {

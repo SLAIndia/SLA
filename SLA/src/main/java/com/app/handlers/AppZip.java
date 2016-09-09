@@ -1,4 +1,4 @@
-package com.app.common;
+package com.app.handlers;
 
 import java.io.File;
 import java.io.FileInputStream;

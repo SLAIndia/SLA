@@ -30,7 +30,7 @@ public class SpecializationsController {
 		List<SpecializationsEntity> specializationsList = specializationsService.getSpecializations();
 		response.put("data", mapper.writeValueAsString(specializationsList));
 		} catch (Exception e) {
-			logger.error("error in SpecializationsController :"+e.getMessage());
+			logger.error("error in getSpecializations :"+e.getMessage());
 		}
 		return response;
 	}
@@ -45,7 +45,22 @@ public class SpecializationsController {
 		objSpecializations = specializationsService.saveSpecializations(objSpecializations);
 		response.put("data", mapper.writeValueAsString(objSpecializations));
 		} catch (Exception e) {
-			logger.error("error in SpecializationsController :"+e.getMessage());
+			logger.error("error in saveSpecializations :"+e.getMessage());
+		}
+		return response;
+	}
+	
+	@RequestMapping(value ="/deleteSpecializations",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody Response deleteSpecializations(@RequestBody String jsonRequestString) throws Exception {
+		Response response = new Response();
+		try {
+		ObjectMapper mapper = new ObjectMapper();
+		SpecializationsEntity objSpecializations = new SpecializationsEntity();
+		objSpecializations = mapper.readValue(jsonRequestString, SpecializationsEntity.class);
+		int res = specializationsService.deleteSpecialization(objSpecializations);
+		response.put("data", mapper.writeValueAsString(res));
+		} catch (Exception e) {
+			logger.error("error in deleteSpecializations :"+e.getMessage());
 		}
 		return response;
 	}

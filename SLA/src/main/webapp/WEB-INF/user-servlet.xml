@@ -27,7 +27,7 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/cattle/*" />
-			<bean class="com.app.common.ReqHandlerInterceptor"></bean>
+			<bean class="com.app.handlers.ReqHandlerInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
      
