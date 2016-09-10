@@ -2,13 +2,17 @@
 <!DOCTYPE hibernate-configuration PUBLIC
     "-//Hibernate/Hibernate Configuration DTD//EN"
     "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
-  
+
 <hibernate-configuration>
-	    <session-factory>
-	    <!-- hospital -->
-	    <mapping class="com.app.hospital.entity.SpecializationsEntity" />
-	    
-	    <!-- usermanagement -->
+	<session-factory>
+		<!-- hospital -->
+		<mapping class="com.app.hospital.entity.SpecializationsEntity" />
+		<!-- Master -->
+		<mapping class="com.app.master.entity.CountryEntity" />
+		<!-- usermanagement -->
 		<mapping class="com.app.usermanagement.entity.RoleEntity" />
-    </session-factory>
+		<mapping class="com.app.usermanagement.entity.UserTypeEntity" />
+		<mapping class="com.app.usermanagement.entity.UserDetailsEntity" />
+		<mapping class="com.app.usermanagement.entity.UserEntity" />
+	</session-factory>
 </hibernate-configuration>

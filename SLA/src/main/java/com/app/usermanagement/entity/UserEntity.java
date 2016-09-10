@@ -11,90 +11,45 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-/**
- * @author Jinesh George
- */
+
 @Entity
-@Table(name = "user",schema = "usermanagement")  
+@Table(name = "tbl_user", schema = "usermanagement")
 public class UserEntity {
-    
-    @Id
-    @Column(name="user_id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Integer id;
-    
-    @Column(name="user_name")
-    private String username;
- 
-    @Column(name="user_password")
-    private String password;
 
-	@Column(name="user_isactive")
-    private boolean isactive = true;
-	
-	
-	@Column(name="user_created_dt")
-    private Timestamp usercreateddt;
-	
-	@Column(name="user_temp_password")
-    private String temppassword;
-	
-	@Column(name="user_fname")
-    private String userfname;
-	
-	
-	@Column(name="user_lname")
-    private String userlname;
-	
-	@Column(name="user_location")
-    private String userlocation;
-	
-	@Column(name="user_email")
-    private String useremail;
-	
-	@Column(name="user_address")
-    private String useraddress;
-	
-	@Column(name="user_phone")
-    private String userphone;
-	
+	@Id
+	@Column(name = "pki_user_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+
 	@OneToOne
-	@JoinColumn(name = "user_role_id")
-	private RoleEntity objRoleEntity;
-	
-	@Column(name="created_dt")
-    private Timestamp createddt;
-	
-	@Column(name="updated_dt")
-    private Timestamp updateddt;
-	
-	@Column(name="deleted_dt")
-    private Timestamp deleteddt;
-	
-	@Column(name="unique_sync_key")
-    private String uniquesynckey;
-	
-	@Transient 
-	private String role_name;
-	
-	@Transient 
-	private String newpassword;
-	
-	@Transient
-	private String platform = "web";
-	
-	
-	public Timestamp getUser_updated_dt() {
-		return user_updated_dt;
-	}
+	@JoinColumn(name = "fki_parent_user_id")
+	private UserEntity userEntity;
 
-	public void setUser_updated_dt(Timestamp user_updated_dt) {
-		this.user_updated_dt = user_updated_dt;
-	}
+	@OneToOne
+	@JoinColumn(name = "fki_role_id")
+	private RoleEntity role;
 
-	@Column(name="user_updated_dt")
-    private Timestamp user_updated_dt;
+	@OneToOne
+	@JoinColumn(name = "fki_user_type_id")
+	private UserTypeEntity userType;
 
+	@Column(name = "uvc_username")
+	private String username;
+	
+	@Column(name = "vc_password")
+	private String password;
+
+	@Column(name = "dt_tem_password_dt")
+	private Timestamp tempPasswordDt;
+
+	@Column(name = "i_user_status")
+	private int userStatus;
+
+	@Column(name = "dt_created_date")
+	private Timestamp createdDt;
+
+	@Column(name = "dt_updated_dt")
+	private Timestamp updatedDt;
 
 	public Integer getId() {
 		return id;
@@ -102,6 +57,30 @@ public class UserEntity {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public UserEntity getUserEntity() {
+		return userEntity;
+	}
+
+	public void setUserEntity(UserEntity userEntity) {
+		this.userEntity = userEntity;
+	}
+
+	public RoleEntity getRole() {
+		return role;
+	}
+
+	public void setRole(RoleEntity role) {
+		this.role = role;
+	}
+
+	public UserTypeEntity getUserType() {
+		return userType;
+	}
+
+	public void setUserType(UserTypeEntity userType) {
+		this.userType = userType;
 	}
 
 	public String getUsername() {
@@ -120,143 +99,36 @@ public class UserEntity {
 		this.password = password;
 	}
 
-	public boolean isIsactive() {
-		return isactive;
+	public Timestamp getTempPasswordDt() {
+		return tempPasswordDt;
 	}
 
-	public void setIsactive(boolean isactive) {
-		this.isactive = isactive;
-	}
-	
-	
-	public RoleEntity getObjRoleEntity() {
-		return objRoleEntity;
+	public void setTempPasswordDt(Timestamp tempPasswordDt) {
+		this.tempPasswordDt = tempPasswordDt;
 	}
 
-
-	public void setObjRoleEntity(RoleEntity objRoleEntity) {
-		this.objRoleEntity = objRoleEntity;
-	}
-	public String getRole_name() {
-		return role_name;
+	public int getUserStatus() {
+		return userStatus;
 	}
 
-	public void setRole_name(String role_name) {
-		this.role_name = role_name;
+	public void setUserStatus(int userStatus) {
+		this.userStatus = userStatus;
 	}
 
-	public String getTemppassword() {
-		return temppassword;
+	public Timestamp getCreatedDt() {
+		return createdDt;
 	}
 
-	public void setTemppassword(String temppassword) {
-		this.temppassword = temppassword;
+	public void setCreatedDt(Timestamp createdDt) {
+		this.createdDt = createdDt;
 	}
 
-	public Timestamp getUsercreateddt() {
-		return usercreateddt;
+	public Timestamp getUpdatedDt() {
+		return updatedDt;
 	}
 
-	public void setUsercreateddt(Timestamp usercreateddt) {
-		this.usercreateddt = usercreateddt;
+	public void setUpdatedDt(Timestamp updatedDt) {
+		this.updatedDt = updatedDt;
 	}
 
-	public String getUserfname() {
-		return userfname;
-	}
-
-	public void setUserfname(String userfname) {
-		this.userfname = userfname;
-	}
-
-	public String getUserlname() {
-		return userlname;
-	}
-
-	public void setUserlname(String userlname) {
-		this.userlname = userlname;
-	}
-
-	public String getUserlocation() {
-		return userlocation;
-	}
-
-	public void setUserlocation(String userlocation) {
-		this.userlocation = userlocation;
-	}
-
-	public String getUseremail() {
-		return useremail;
-	}
-
-	public void setUseremail(String useremail) {
-		this.useremail = useremail;
-	}
-
-	public String getUseraddress() {
-		return useraddress;
-	}
-
-	public void setUseraddress(String useraddress) {
-		this.useraddress = useraddress;
-	}
-
-	public String getUserphone() {
-		return userphone;
-	}
-
-	public void setUserphone(String userphone) {
-		this.userphone = userphone;
-	}
-
-	public String getNewpassword() {
-		return newpassword;
-	}
-
-	public void setNewpassword(String newpassword) {
-		this.newpassword = newpassword;
-	}
-
-
-
-	public Timestamp getCreateddt() {
-		return createddt;
-	}
-
-	public void setCreateddt(Timestamp createddt) {
-		this.createddt = createddt;
-	}
-
-	public Timestamp getUpdateddt() {
-		return updateddt;
-	}
-
-	public void setUpdateddt(Timestamp updateddt) {
-		this.updateddt = updateddt;
-	}
-
-	public Timestamp getDeleteddt() {
-		return deleteddt;
-	}
-
-	public void setDeleteddt(Timestamp deleteddt) {
-		this.deleteddt = deleteddt;
-	}
-
-	public String getUniquesynckey() {
-		return uniquesynckey;
-	}
-
-	public void setUniquesynckey(String uniquesynckey) {
-		this.uniquesynckey = uniquesynckey;
-	}
-
-	public String getPlatform() {
-		return platform;
-	}
-
-	public void setPlatform(String platform) {
-		this.platform = platform;
-	}
-	
 }
