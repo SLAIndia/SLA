@@ -328,3 +328,14 @@ CREATE TABLE tbl_favourites
 
 
 
+--09-09-2016-- Jinesh
+
+alter table hospital.tbl_hos_dept_type add column dt_created_date timestamp  without time zone DEFAULT timezone('utc'::text, now());
+alter table hospital.tbl_hos_dept_type add column dt_updated_date timestamp  without time zone;
+alter table hospital.tbl_hos_dept_type alter column fki_parent_dept_type_id drop not null;
+
+--10-092016-- Ciby
+
+ALTER TABLE usermanagement.tbl_user ADD COLUMN dt_tem_password_dt timestamp without time zone;
+COMMENT ON COLUMN usermanagement.tbl_user.dt_tem_password_dt IS 'temporary password update time ';
+
