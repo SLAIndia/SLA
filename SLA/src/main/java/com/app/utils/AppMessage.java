@@ -12,6 +12,7 @@ public enum AppMessage {
 	INVALID_USER,
 	INTERNAL_SERVER_ERROR,
 	USERNAME_EXISTS,
+	PHONE_EXISTS,
 	RECORD_NOT_FOUND;
 	private static final String PATH = "/appconstants.properties";
 

@@ -13,9 +13,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.app.master.entity.CountryEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
 @Table(name = "tbl_user_details", schema = "usermanagement")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDetailsEntity {
 
 	@Id
@@ -52,12 +55,19 @@ public class UserDetailsEntity {
 	@Column(name = "vc_phone_3")
 	private String phone3;
 
+	@Column(name = "vc_device_token")
+	private String deviceToken;
+
+	@Column(name = "i_device_type")
+	private Integer deviceType;
+
 	@Column(name = "dt_created_date")
 	private Timestamp createdDt;
 
 	@Column(name = "dt_updated_dt")
 	private Timestamp updatedDt;
 
+	@JsonIgnore
 	public Integer getId() {
 		return id;
 	}
@@ -138,6 +148,23 @@ public class UserDetailsEntity {
 		this.phone3 = phone3;
 	}
 
+	public String getDeviceToken() {
+		return deviceToken;
+	}
+
+	public void setDeviceToken(String deviceToken) {
+		this.deviceToken = deviceToken;
+	}
+
+	public Integer getDeviceType() {
+		return deviceType;
+	}
+
+	public void setDeviceType(Integer deviceType) {
+		this.deviceType = deviceType;
+	}
+
+	@JsonIgnore
 	public Timestamp getCreatedDt() {
 		return createdDt;
 	}
@@ -146,6 +173,7 @@ public class UserDetailsEntity {
 		this.createdDt = createdDt;
 	}
 
+	@JsonIgnore
 	public Timestamp getUpdatedDt() {
 		return updatedDt;
 	}
