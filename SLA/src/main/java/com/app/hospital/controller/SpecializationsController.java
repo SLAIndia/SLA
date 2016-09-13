@@ -35,13 +35,12 @@ public class SpecializationsController {
 		return response;
 	}
 	
-	@RequestMapping(value ="/saveSpecializations",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody AppResponse getSpecializations(@RequestBody String jsonRequestString) throws Exception {
+	@RequestMapping(value ="/saveSpecializations",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody AppResponse getSpecializations(@RequestBody SpecializationsEntity objSpecializations) throws Exception {
 		AppResponse response = new AppResponse();
 		try {
 		ObjectMapper mapper = new ObjectMapper();
-		SpecializationsEntity objSpecializations = new SpecializationsEntity();
-		objSpecializations = mapper.readValue(jsonRequestString, SpecializationsEntity.class);
+		System.out.println(objSpecializations.getObjSpecializationsParent().getPki_hos_dept_type_id()+","+objSpecializations.getPki_hos_dept_type_id()+","+objSpecializations.getVc_hos_dept_type_name()+","+objSpecializations.getDt_updated_date());
 		objSpecializations = specializationsService.saveSpecializations(objSpecializations);
 		response.put("data", mapper.writeValueAsString(objSpecializations));
 		} catch (Exception e) {

@@ -17,7 +17,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
  */
 @Entity
 @Table(name = "tbl_hos_dept_type",schema = "hospital")  
-@JsonIgnoreProperties(ignoreUnknown = true)
+//@JsonIgnoreProperties(ignoreUnknown = true)
 public class SpecializationsEntity {
 
     @Id
