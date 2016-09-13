@@ -10,7 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tbl_user", schema = "usermanagement")
@@ -35,8 +36,9 @@ public class UserEntity {
 
 	@Column(name = "uvc_username")
 	private String username;
-	
+
 	@Column(name = "vc_password")
+
 	private String password;
 
 	@Column(name = "dt_tem_password_dt")
@@ -91,6 +93,7 @@ public class UserEntity {
 		this.username = username;
 	}
 
+	@JsonIgnore
 	public String getPassword() {
 		return password;
 	}
@@ -99,6 +102,7 @@ public class UserEntity {
 		this.password = password;
 	}
 
+	@JsonIgnore
 	public Timestamp getTempPasswordDt() {
 		return tempPasswordDt;
 	}
@@ -114,7 +118,7 @@ public class UserEntity {
 	public void setUserStatus(int userStatus) {
 		this.userStatus = userStatus;
 	}
-
+	@JsonIgnore
 	public Timestamp getCreatedDt() {
 		return createdDt;
 	}
@@ -122,7 +126,7 @@ public class UserEntity {
 	public void setCreatedDt(Timestamp createdDt) {
 		this.createdDt = createdDt;
 	}
-
+	@JsonIgnore
 	public Timestamp getUpdatedDt() {
 		return updatedDt;
 	}

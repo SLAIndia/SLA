@@ -1,5 +1,7 @@
 package com.app.usermanagement.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.handlers.AppResponse;
 import com.app.usermanagement.entity.UserDetailsEntity;
 import com.app.usermanagement.service.UserService;
+import com.app.utils.AppException;
+import com.app.utils.AppMessage;
 
 @RestController
 @RequestMapping("/usermanagement/user")
@@ -33,7 +37,8 @@ public class UserController {
 	@ResponseBody
 	public AppResponse getUser(@PathVariable("userId") int userId) throws Exception {
 		AppResponse response = new AppResponse();
-		response.put(AppResponse.DATA_FIELD, userService.getUser(userId));
+		response.put(AppResponse.DATA_FIELD, Optional.ofNullable(userService.getUser(userId))
+				.orElseThrow(() -> new AppException(AppMessage.RECORD_NOT_FOUND)));
 		return response;
 	}
 
@@ -44,16 +49,41 @@ public class UserController {
 		userService.registerUser(userDetailsEntity);
 		return response;
 	}
+	@RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public AppResponse updateUser(@RequestBody UserDetailsEntity userDetailsEntity) throws Exception {
+		AppResponse response = new AppResponse();
+		userService.updateUser(userDetailsEntity);
+		return response;
+	}
 
 	@RequestMapping(value = "/isUsernameInUse", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
 	@ResponseBody
-	public AppResponse isUsernameAlreadyInUse(@RequestParam(value = "username") String username) throws Exception {
+	public AppResponse isUsernameAlreadyInUse(@RequestParam(value = "username") String username,
+			@RequestParam(value = "userId", required = false) Integer userId) throws Exception {
 		AppResponse response = new AppResponse();
+		System.out.println("username " + username);		
+		if(userService.isUsernameAlreadyInUse(username, userId)){			
+			response.put(AppResponse.MESSAGE_FIELD, AppMessage.USERNAME_EXISTS.getValue());			
+		}else {
+			response.put(AppResponse.MESSAGE_FIELD, AppMessage.NOT_FOUND.getValue());	
+			response.put(AppResponse.STATUS, false);
+		}		 
+		return response;
+	}
 
-		System.out.println("username " + username);
-
-		response.put("data", "[]");
-
+	@RequestMapping(value = "/isPhoneInUse", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	@ResponseBody
+	public AppResponse isPhoneAlreadyInUse(@RequestParam(value = "phone") String phone,
+			@RequestParam(value = "userId", required = false) Integer userId) throws Exception {
+		AppResponse response = new AppResponse();
+		System.out.println("phone " + phone);
+		if(userService.isPhoneAlreadyInUse(phone, userId)){			
+			response.put(AppResponse.MESSAGE_FIELD, AppMessage.PHONE_EXISTS.getValue());			
+		}else {
+			response.put(AppResponse.MESSAGE_FIELD, AppMessage.NOT_FOUND.getValue());	
+			response.put(AppResponse.STATUS, false);
+		}
 		return response;
 	}
 
