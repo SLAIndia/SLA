@@ -8,11 +8,15 @@
 		<!-- hospital -->
 		<mapping class="com.app.hospital.entity.SpecializationsEntity" />
 		<!-- Master -->
+		<mapping class="com.app.master.entity.StateEntity" />
 		<mapping class="com.app.master.entity.CountryEntity" />
 		<!-- usermanagement -->
 		<mapping class="com.app.usermanagement.entity.RoleEntity" />
 		<mapping class="com.app.usermanagement.entity.UserTypeEntity" />
+		<mapping class="com.app.usermanagement.entity.UserAddressEntity" />
 		<mapping class="com.app.usermanagement.entity.UserDetailsEntity" />
 		<mapping class="com.app.usermanagement.entity.UserEntity" />
+
+		<mapping class="com.app.usermanagement.entity.UserSubscriptionEntity" />
 	</session-factory>
 </hibernate-configuration>

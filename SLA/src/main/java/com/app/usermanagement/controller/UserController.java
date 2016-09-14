@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.app.handlers.AppResponse;
 import com.app.usermanagement.entity.UserDetailsEntity;
@@ -49,6 +50,7 @@ public class UserController {
 		userService.registerUser(userDetailsEntity);
 		return response;
 	}
+
 	@RequestMapping(method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public AppResponse updateUser(@RequestBody UserDetailsEntity userDetailsEntity) throws Exception {
@@ -62,13 +64,13 @@ public class UserController {
 	public AppResponse isUsernameAlreadyInUse(@RequestParam(value = "username") String username,
 			@RequestParam(value = "userId", required = false) Integer userId) throws Exception {
 		AppResponse response = new AppResponse();
-		System.out.println("username " + username);		
-		if(userService.isUsernameAlreadyInUse(username, userId)){			
-			response.put(AppResponse.MESSAGE_FIELD, AppMessage.USERNAME_EXISTS.getValue());			
-		}else {
-			response.put(AppResponse.MESSAGE_FIELD, AppMessage.NOT_FOUND.getValue());	
+		System.out.println("username " + username);
+		if (userService.isUsernameAlreadyInUse(username, userId)) {
+			response.put(AppResponse.MESSAGE_FIELD, AppMessage.USERNAME_EXISTS.getValue());
+		} else {
+			response.put(AppResponse.MESSAGE_FIELD, AppMessage.NOT_FOUND.getValue());
 			response.put(AppResponse.STATUS, false);
-		}		 
+		}
 		return response;
 	}
 
@@ -78,12 +80,22 @@ public class UserController {
 			@RequestParam(value = "userId", required = false) Integer userId) throws Exception {
 		AppResponse response = new AppResponse();
 		System.out.println("phone " + phone);
-		if(userService.isPhoneAlreadyInUse(phone, userId)){			
-			response.put(AppResponse.MESSAGE_FIELD, AppMessage.PHONE_EXISTS.getValue());			
-		}else {
-			response.put(AppResponse.MESSAGE_FIELD, AppMessage.NOT_FOUND.getValue());	
+		if (userService.isPhoneAlreadyInUse(phone, userId)) {
+			response.put(AppResponse.MESSAGE_FIELD, AppMessage.PHONE_EXISTS.getValue());
+		} else {
+			response.put(AppResponse.MESSAGE_FIELD, AppMessage.NOT_FOUND.getValue());
 			response.put(AppResponse.STATUS, false);
 		}
+		return response;
+	}
+
+	@RequestMapping(value = "/updateUserImages", method = RequestMethod.POST)
+	@ResponseBody
+	public AppResponse updateUserImages(@RequestParam("details") String details,
+			MultipartHttpServletRequest fileRequest, @RequestParam(required = false) String[] images,
+			@RequestParam(required = false) String deletedImgs) throws Exception {
+		AppResponse response = new AppResponse();
+
 		return response;
 	}
 

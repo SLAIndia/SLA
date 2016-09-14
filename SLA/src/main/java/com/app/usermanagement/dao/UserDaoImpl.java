@@ -4,12 +4,14 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.app.usermanagement.entity.UserAddressEntity;
 import com.app.usermanagement.entity.UserDetailsEntity;
 import com.app.usermanagement.entity.UserEntity;
 import com.app.utils.RepositoryConstants;
@@ -53,7 +55,7 @@ public class UserDaoImpl implements UserDao {
 	public void updateUser(UserEntity userEntity) throws Exception {
 		this.sessionFactory.getCurrentSession().update(userEntity);
 	}
-	
+
 	@Override
 	@Transactional
 	public void updateUserDetails(UserDetailsEntity userDetailsEntity) throws Exception {
@@ -93,4 +95,34 @@ public class UserDaoImpl implements UserDao {
 		return query.executeUpdate() > 0;
 	}
 
+	@Override
+	@Transactional
+	public void saveUserAddresses(List<UserAddressEntity> addresses, UserEntity user) {
+		Session session = this.sessionFactory.getCurrentSession();
+		addresses.forEach(address -> {
+			address.setUser(user);
+			session.save(address);
+		});
+	}
+
+	@Override
+	@Transactional
+	public void updateUserAddresses(List<UserAddressEntity> addresses, UserEntity user) {
+		String updateAddressQuery = "update UserAddressEntity address"
+				+ " set address.location = :location, address.lattitude = :lattitude,"
+				+ " address.longitude = :longitude, address.locationBuffer = :locationBuffer,"
+				+ " address.pinCode = :pinCode, address.isPrimary = :isPrimary,"
+				+ " address.state.id = :stateId, address.country.id = :countryId where address.id = :id";
+		Session session = this.sessionFactory.getCurrentSession();
+		addresses.forEach(address -> {
+			address.setUser(user);
+			session.createQuery(updateAddressQuery).setString("location", address.getLocation())
+					.setString("lattitude", address.getLattitude()).setString("longitude", address.getLongitude())
+					.setInteger("locationBuffer", address.getLocationBuffer())
+					.setString("pinCode", address.getPinCode()).setInteger("isPrimary", address.getIsPrimary())
+					.setInteger("stateId", address.getState().getId())
+					.setInteger("countryId", address.getCountry().getId()).setInteger("id", address.getId())
+					.executeUpdate();
+		});
+	}
 }

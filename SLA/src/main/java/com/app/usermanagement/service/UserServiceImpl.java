@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.usermanagement.dao.UserDao;
+import com.app.usermanagement.entity.UserAddressEntity;
 import com.app.usermanagement.entity.UserDetailsEntity;
 import com.app.usermanagement.entity.UserEntity;
 import com.app.utils.AppException;
@@ -40,7 +41,7 @@ public class UserServiceImpl implements UserService {
 
 		String password = new RandomString(6).nextString().toUpperCase();
 		Timestamp currentTime = Common.getCurrentTimestamp();
-		
+
 		user.setPassword(AppUtil.getMD5(password));
 		user.setUpdatedDt(currentTime);
 		user.setCreatedDt(currentTime);
@@ -56,6 +57,10 @@ public class UserServiceImpl implements UserService {
 		userDetails.setUpdatedDt(currentTime);
 
 		userDao.saveUserDetails(userDetails);
+		// saving user addresses
+		if (null != userDetails.getAddresses()) {
+			userDao.saveUserAddresses(userDetails.getAddresses(), user);
+		}
 
 		// sendRegisterMessageToUser(userDetails);
 
@@ -65,7 +70,7 @@ public class UserServiceImpl implements UserService {
 	public void updateUser(UserDetailsEntity userDetails) throws Exception {
 		UserEntity user = userDetails.getUser();
 		validateUser(user, userDetails);
-		
+
 		Timestamp currentTime = Common.getCurrentTimestamp();
 
 		UserDetailsEntity userDetailsDB = userDao.getUser(user.getId());
@@ -106,7 +111,10 @@ public class UserServiceImpl implements UserService {
 		userDetailsDB.setUpdatedDt(currentTime);
 
 		userDao.updateUserDetails(userDetailsDB);
-
+		// updating user addresses
+		if (null != userDetails.getAddresses()) {
+			userDao.updateUserAddresses(userDetails.getAddresses(), user);
+		}
 	}
 
 	@Override

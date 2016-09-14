@@ -1,6 +1,7 @@
 package com.app.usermanagement.entity;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.app.master.entity.CountryEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -66,6 +68,9 @@ public class UserDetailsEntity {
 
 	@Column(name = "dt_updated_dt")
 	private Timestamp updatedDt;
+
+	@Transient
+	private List<UserAddressEntity> addresses;
 
 	@JsonIgnore
 	public Integer getId() {
@@ -180,6 +185,14 @@ public class UserDetailsEntity {
 
 	public void setUpdatedDt(Timestamp updatedDt) {
 		this.updatedDt = updatedDt;
+	}
+
+	public List<UserAddressEntity> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(List<UserAddressEntity> addresses) {
+		this.addresses = addresses;
 	}
 
 }
