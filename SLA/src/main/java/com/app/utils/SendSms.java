@@ -3,10 +3,8 @@ import java.net.*;
 import java.io.*;
 
 public class SendSms {
-
     static public void main(String[] args) {
         try {
-            // Construct data
             String data = "";
             /*
              * Note the suggested encoding for certain parameters, notably
