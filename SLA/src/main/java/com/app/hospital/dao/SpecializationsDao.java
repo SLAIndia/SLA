@@ -9,7 +9,7 @@ public interface SpecializationsDao {
 
 	List<SpecializationsEntity> getSpecializations();
 
-	SpecializationsEntity getSpecialization(SpecializationsEntity objSpecializationsEntity);
+	SpecializationsEntity getSpecialization(long pki_hos_dept_type_id);
 
-	int deleteSpecialization(SpecializationsEntity objSpecializationsEntity);
+	int deleteSpecialization(long pki_hos_dept_type_id);
 }

@@ -1,10 +1,8 @@
 package com.app.hospital.controller;
-import java.util.List;
-
 import org.apache.log4j.Logger;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,45 +19,49 @@ public class SpecializationsController {
 	private static final Logger logger = Logger.getLogger(SpecializationsController.class);
 	@Autowired
 	private SpecializationsService specializationsService;
-	@RequestMapping( value ="/getSpecializations",method = RequestMethod.POST,
+	@RequestMapping( value ="/getspecializations",method = RequestMethod.GET,
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody AppResponse getSpecializations() throws Exception {
 		AppResponse response = new AppResponse();
 		try {
-		ObjectMapper mapper = new ObjectMapper();
-		List<SpecializationsEntity> specializationsList = specializationsService.getSpecializations();
-		response.put("data", mapper.writeValueAsString(specializationsList));
+			response.put(AppResponse.DATA_FIELD, specializationsService.getSpecializations());
 		} catch (Exception e) {
 			logger.error("error in getSpecializations :"+e.getMessage());
 		}
 		return response;
 	}
 	
-	@RequestMapping(value ="/saveSpecializations",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody AppResponse getSpecializations(@RequestBody SpecializationsEntity objSpecializations) throws Exception {
+	@RequestMapping(value ="/savespecializations",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody AppResponse saveSpecializations(@RequestBody SpecializationsEntity objSpecializations) throws Exception {
 		AppResponse response = new AppResponse();
 		try {
-		ObjectMapper mapper = new ObjectMapper();
-		System.out.println(objSpecializations.getObjSpecializationsParent().getPki_hos_dept_type_id()+","+objSpecializations.getPki_hos_dept_type_id()+","+objSpecializations.getVc_hos_dept_type_name()+","+objSpecializations.getDt_updated_date());
-		objSpecializations = specializationsService.saveSpecializations(objSpecializations);
-		response.put("data", mapper.writeValueAsString(objSpecializations));
+		response.put(AppResponse.DATA_FIELD, specializationsService.saveSpecializations(objSpecializations));
 		} catch (Exception e) {
-			logger.error("error in saveSpecializations :"+e.getMessage());
+			logger.error("error in savespecializations :"+e.getMessage());
 		}
 		return response;
 	}
 	
-	@RequestMapping(value ="/deleteSpecializations",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody AppResponse deleteSpecializations(@RequestBody String jsonRequestString) throws Exception {
+	@RequestMapping(value ="/deletespecializations/{pki_hos_dept_type_id}",method = RequestMethod.DELETE,produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody AppResponse deleteSpecializations(@PathVariable("pki_hos_dept_type_id") long pki_hos_dept_type_id) throws Exception {
 		AppResponse response = new AppResponse();
 		try {
-		ObjectMapper mapper = new ObjectMapper();
-		SpecializationsEntity objSpecializations = new SpecializationsEntity();
-		objSpecializations = mapper.readValue(jsonRequestString, SpecializationsEntity.class);
-		int res = specializationsService.deleteSpecialization(objSpecializations);
-		response.put("data", mapper.writeValueAsString(res));
+		int res = specializationsService.deleteSpecialization(pki_hos_dept_type_id);
+		response.put(AppResponse.MESSAGE_FIELD,res==0?AppResponse.FAILURE_MESSAGE:AppResponse.SUCCESS_MESSAGE);
+		response.put(AppResponse.STATUS,res==0?false:true);
 		} catch (Exception e) {
 			logger.error("error in deleteSpecializations :"+e.getMessage());
+		}
+		return response;
+	}
+	
+	@RequestMapping(value ="/getspecialization/{pki_hos_dept_type_id}",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody AppResponse getSpecialization(@PathVariable("pki_hos_dept_type_id") long pki_hos_dept_type_id) throws Exception {
+		AppResponse response = new AppResponse();
+		try {
+			response.put(AppResponse.DATA_FIELD,specializationsService.getSpecialization(pki_hos_dept_type_id));
+		} catch (Exception e) {
+			logger.error("error in getSpecialization :"+e.getMessage());
 		}
 		return response;
 	}

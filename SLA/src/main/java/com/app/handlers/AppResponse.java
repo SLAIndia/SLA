@@ -11,7 +11,9 @@ public class AppResponse extends HashMap<String, Object> {
 	public static final String STATUS_CODE_200 = "200";
 	public static final String FAIL_MESSAGE = "Request was invalid.";
 	public static final String SUCCESS_MESSAGE = "Successful";
+	public static final String FAILURE_MESSAGE = "Failed";
 	public static final String STATUS = "status";
+	public static final String NO_RECORDS = "No Records Found";
 	
 	public AppResponse()	{
 		this.put(STATUS, true);

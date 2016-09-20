@@ -22,6 +22,7 @@ public class UserDaoImpl implements UserDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
 	public List<UserDetailsEntity> getUsers() throws Exception {

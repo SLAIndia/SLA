@@ -24,11 +24,11 @@ public class SpecializationsServiceImpl implements SpecializationsService {
 		return specializationsDao.getSpecializations();
 	}
 	@Override
-	public SpecializationsEntity getSpecialization(SpecializationsEntity objSpecializationsEntity) {
-		return specializationsDao.getSpecialization(objSpecializationsEntity);
+	public SpecializationsEntity getSpecialization(long pki_hos_dept_type_id) {
+		return specializationsDao.getSpecialization(pki_hos_dept_type_id);
 	}
 	@Override
-	public int deleteSpecialization(SpecializationsEntity objSpecializationsEntity) {
-		return specializationsDao.deleteSpecialization(objSpecializationsEntity);
+	public int deleteSpecialization(long pki_hos_dept_type_id) {
+		return specializationsDao.deleteSpecialization(pki_hos_dept_type_id);
 	}
 }

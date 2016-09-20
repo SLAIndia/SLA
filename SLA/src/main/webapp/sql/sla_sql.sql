@@ -339,3 +339,23 @@ alter table hospital.tbl_hos_dept_type alter column fki_parent_dept_type_id drop
 ALTER TABLE usermanagement.tbl_user ADD COLUMN dt_tem_password_dt timestamp without time zone;
 COMMENT ON COLUMN usermanagement.tbl_user.dt_tem_password_dt IS 'temporary password update time ';
 
+
+-- added state & country column  in usermanagement.tbl_address  table
+
+ALTER TABLE usermanagement.tbl_address ADD COLUMN fki_state_id bigint;
+
+
+ALTER TABLE usermanagement.tbl_address
+  ADD CONSTRAINT fki_state_id FOREIGN KEY (fki_state_id)
+      REFERENCES public.tbl_state (pki_state_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+ALTER TABLE usermanagement.tbl_address ADD COLUMN fki_country_id bigint;
+
+      ALTER TABLE usermanagement.tbl_address
+  ADD CONSTRAINT fk_country_id FOREIGN KEY (fki_country_id)
+      REFERENCES public.tbl_country (pki_country_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION;
+
+--NB: DROPPED fki_country_id  column in usermanagement.tbl_user_details tabe
+
