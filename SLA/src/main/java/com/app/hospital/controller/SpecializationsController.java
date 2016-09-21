@@ -60,7 +60,7 @@ public class SpecializationsController {
 		return response;
 	}
 	
-	@RequestMapping(value ="/getspecialization/{pki_hos_dept_type_id}",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value ="/getspecialization/{pki_hos_dept_type_id}",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody AppResponse getSpecialization(@PathVariable("pki_hos_dept_type_id") long pki_hos_dept_type_id) throws Exception {
 		AppResponse response = new AppResponse();
 		try {

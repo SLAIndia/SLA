@@ -20,4 +20,6 @@ public interface UserService {
 	public boolean isPhoneAlreadyInUse(String phone1, Integer userId) throws Exception;
 
 	public boolean deleteUser(int userTypeId) throws Exception;
+
+	public boolean approveUser(int status, String[] userIds) throws Exception;
 }

@@ -126,4 +126,10 @@ public class UserDaoImpl implements UserDao {
 					.executeUpdate();
 		});
 	}
+
+	@Override
+	public boolean approveUser(int status, String[] userIds) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

@@ -28,4 +28,6 @@ public interface UserDao {
 	public void saveUserAddresses(List<UserAddressEntity> addresses, UserEntity userEntity);
 
 	public void updateUserAddresses(List<UserAddressEntity> addresses, UserEntity userEntity);
+
+	public boolean approveUser(int status, String[] userIds);
 }

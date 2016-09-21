@@ -163,4 +163,9 @@ public class UserServiceImpl implements UserService {
 
 	}
 
+	@Override
+	public boolean approveUser(int status, String[] userIds) throws Exception {
+		return userDao.approveUser(status,userIds);
+	}
+	
 }

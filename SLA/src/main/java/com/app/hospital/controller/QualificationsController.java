@@ -64,7 +64,7 @@ public class QualificationsController {
 		return response;
 	}
 	
-	@RequestMapping(value ="/getspecialization/{pki_doctor_qualif_master_id}",method = RequestMethod.POST,produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value ="/getqualification/{pki_doctor_qualif_master_id}",method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody AppResponse getQualification(@PathVariable("pki_doctor_qualif_master_id") long pki_doctor_qualif_master_id) throws Exception {
 		AppResponse response = new AppResponse();
 		try {
