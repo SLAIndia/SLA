@@ -35,7 +35,12 @@ public class SpecializationsController {
 	public @ResponseBody AppResponse saveSpecializations(@RequestBody SpecializationsEntity objSpecializations) throws Exception {
 		AppResponse response = new AppResponse();
 		try {
+		if(specializationsService.getSpecializationByName(objSpecializations.getVc_hos_dept_type_name())==null){
 		response.put(AppResponse.DATA_FIELD, specializationsService.saveSpecializations(objSpecializations));
+		}else{
+			response.put(AppResponse.MESSAGE_FIELD,AppResponse.FAILURE_ALREADY_EXISTS_MESSAGE);
+			response.put(AppResponse.STATUS,false);
+		}
 		} catch (Exception e) {
 			logger.error("error in savespecializations :"+e.getMessage());
 		}

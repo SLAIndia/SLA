@@ -14,6 +14,7 @@ public class AppResponse extends HashMap<String, Object> {
 	public static final String FAILURE_MESSAGE = "Failed";
 	public static final String STATUS = "status";
 	public static final String NO_RECORDS = "No Records Found";
+	public static final String FAILURE_ALREADY_EXISTS_MESSAGE = "Name Already Exists";
 	
 	public AppResponse()	{
 		this.put(STATUS, true);

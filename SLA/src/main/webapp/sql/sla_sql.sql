@@ -341,7 +341,7 @@ COMMENT ON COLUMN usermanagement.tbl_user.dt_tem_password_dt IS 'temporary passw
 
 
 -- added state & country column  in usermanagement.tbl_address  table
-
+alter table usermanagement.tbl_user_details drop column fki_country_id;
 ALTER TABLE usermanagement.tbl_address ADD COLUMN fki_state_id bigint;
 
 
@@ -357,5 +357,8 @@ ALTER TABLE usermanagement.tbl_address ADD COLUMN fki_country_id bigint;
       REFERENCES public.tbl_country (pki_country_id) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION;
 
---NB: DROPPED fki_country_id  column in usermanagement.tbl_user_details tabe
+--NB: DROPPED fki_country_id  column in usermanagement.tbl_user_details table
 
+--21-09-2016-- Jinesh
+alter table hospital.tbl_hos_dept_type alter column fki_parent_dept_type_id drop not null;
+alter TABLE hospital.tbl_doctor_qualif_master alter column uvc_qualif_name set not null

@@ -13,4 +13,6 @@ public interface SpecializationsService {
 
 	int deleteSpecialization(long pki_hos_dept_type_id);
 
+	SpecializationsEntity getSpecializationByName(String vc_hos_dept_type_name);
+
 }

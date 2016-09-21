@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.app.hospital.entity.SpecializationsEntity;
+import com.app.hospital.entity.SpecializationsEntity;
 import com.app.usermanagement.entity.UserDetailsEntity;
 import com.app.utils.RepositoryConstants;
 
@@ -85,5 +86,24 @@ public class SpecializationsDaoImpl implements SpecializationsDao{
 		}
 		return status;
 	}
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public SpecializationsEntity getSpecializationByName(String vc_hos_dept_type_name) {
 
+		String sql = "from SpecializationsEntity where vc_hos_dept_type_name =:vc_hos_dept_type_name";
+		SpecializationsEntity obj =null;
+		try {
+			Query query = this.sessionFactory.getCurrentSession().createQuery(sql);
+			query.setParameter("vc_hos_dept_type_name", vc_hos_dept_type_name);
+			List<SpecializationsEntity> result =  query.list();
+			if(result != null && result.size()>0){
+				obj = (SpecializationsEntity) result.get(0);
+			}
+		} catch (Exception e) {
+			logger.error("Error in getSpecialization Method " + e.getMessage());
+		}
+		return obj;
+	}
+	
 }

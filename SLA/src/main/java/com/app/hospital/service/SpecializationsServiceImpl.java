@@ -31,4 +31,10 @@ public class SpecializationsServiceImpl implements SpecializationsService {
 	public int deleteSpecialization(long pki_hos_dept_type_id) {
 		return specializationsDao.deleteSpecialization(pki_hos_dept_type_id);
 	}
+
+	@Override
+	public SpecializationsEntity getSpecializationByName(
+			String vc_hos_dept_type_name) {
+		return specializationsDao.getSpecializationByName(vc_hos_dept_type_name);
+	}
 }
