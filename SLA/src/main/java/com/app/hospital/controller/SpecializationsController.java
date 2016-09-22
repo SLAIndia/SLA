@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.handlers.AppResponse;
 import com.app.hospital.entity.SpecializationsEntity;
 import com.app.hospital.service.SpecializationsService;
+import com.app.utils.AppMessage;
 
 @RestController
 @RequestMapping("/hospital/specializations")
@@ -36,11 +37,15 @@ public class SpecializationsController {
 		AppResponse response = new AppResponse();
 		try {
 		if(specializationsService.getSpecializationByName(objSpecializations.getVc_hos_dept_type_name())==null){
-		response.put(AppResponse.DATA_FIELD, specializationsService.saveSpecializations(objSpecializations));
-		}else{
-			response.put(AppResponse.MESSAGE_FIELD,AppResponse.FAILURE_ALREADY_EXISTS_MESSAGE);
-			response.put(AppResponse.STATUS,false);
-		}
+			response.put(AppResponse.DATA_FIELD, specializationsService.saveSpecializations(objSpecializations));
+			}else if(specializationsService.getSpecializationByName(objSpecializations.getVc_hos_dept_type_name())!=null && objSpecializations.getPki_hos_dept_type_id()==null){
+				response.put(AppResponse.MESSAGE_FIELD,AppMessage.NAME_ALREADY_EXISTS);
+				response.put(AppResponse.STATUS,false);
+			}else if(specializationsService.getSpecializationByName(objSpecializations.getVc_hos_dept_type_name())!=null && objSpecializations.getPki_hos_dept_type_id()!=null
+					&& specializationsService.getSpecializationByName(objSpecializations.getVc_hos_dept_type_name()).getPki_hos_dept_type_id()!=objSpecializations.getPki_hos_dept_type_id()){
+				response.put(AppResponse.MESSAGE_FIELD,AppMessage.NAME_ALREADY_EXISTS);
+				response.put(AppResponse.STATUS,false);
+			}
 		} catch (Exception e) {
 			logger.error("error in savespecializations :"+e.getMessage());
 		}

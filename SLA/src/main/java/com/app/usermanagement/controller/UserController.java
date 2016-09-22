@@ -99,11 +99,10 @@ public class UserController {
 		return response;
 	}
 	
-	@RequestMapping(value = "/approveUser", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/admin/approveUser", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public AppResponse approveUser(@RequestParam(value = "status") int status, @RequestParam(value = "userIds") String[] userIds) throws Exception {
+	public AppResponse approveUser(@RequestParam(value = "status") int status, @RequestParam(value = "userIds") Integer[] userIds) throws Exception {
 		AppResponse response = new AppResponse();
-		System.out.println("status---->>>"+status+"====="+userIds);
 		response.put(AppResponse.DATA_FIELD, userService.approveUser(status,userIds));
 		return response;
 	}

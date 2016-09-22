@@ -13,7 +13,8 @@ public enum AppMessage {
 	INTERNAL_SERVER_ERROR,
 	USERNAME_EXISTS,
 	PHONE_EXISTS,
-	RECORD_NOT_FOUND;
+	RECORD_NOT_FOUND,
+	NAME_ALREADY_EXISTS;
 	private static final String PATH = "/appconstants.properties";
 
 	private static final Logger logger = LoggerFactory.getLogger(AppMessage.class);

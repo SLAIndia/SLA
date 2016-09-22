@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.handlers.AppResponse;
 import com.app.hospital.entity.QualificationsEntity;
 import com.app.hospital.service.QualificationsService;
+import com.app.utils.AppMessage;
 
 @RestController
 @RequestMapping("/hospital/qualifications")
@@ -38,11 +39,11 @@ public class QualificationsController {
 		if(qualificationsService.getQualificationByName(objQualifications.getUvc_qualif_name())==null){
 		response.put(AppResponse.DATA_FIELD, qualificationsService.saveQualifications(objQualifications));
 		}else if(qualificationsService.getQualificationByName(objQualifications.getUvc_qualif_name())!=null && objQualifications.getPki_doctor_qualif_master_id()==null){
-			response.put(AppResponse.MESSAGE_FIELD,AppResponse.FAILURE_ALREADY_EXISTS_MESSAGE);
+			response.put(AppResponse.MESSAGE_FIELD,AppMessage.NAME_ALREADY_EXISTS);
 			response.put(AppResponse.STATUS,false);
 		}else if(qualificationsService.getQualificationByName(objQualifications.getUvc_qualif_name())!=null && objQualifications.getPki_doctor_qualif_master_id()!=null
 				&& qualificationsService.getQualificationByName(objQualifications.getUvc_qualif_name()).getPki_doctor_qualif_master_id()!=objQualifications.getPki_doctor_qualif_master_id()){
-			response.put(AppResponse.MESSAGE_FIELD,AppResponse.FAILURE_ALREADY_EXISTS_MESSAGE);
+			response.put(AppResponse.MESSAGE_FIELD,AppMessage.NAME_ALREADY_EXISTS);
 			response.put(AppResponse.STATUS,false);
 		}
 		} catch (Exception e) {
