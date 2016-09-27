@@ -378,3 +378,6 @@ fki_hos_dept_type_id  bigint , fki_parent_dept_type_id  bigint not null, foreign
 fki_hospital_id  bigint , foreign key(fki_hospital_id) references usermanagement.tbl_user(pki_user_id)
 );
 
+alter table usermanagement.tbl_user_details add column i_gender integer not null default 0;
+alter table usermanagement.tbl_user_details add column dt_dob timestamp ;
+

@@ -8,6 +8,7 @@
 		<!-- hospital -->
 		<mapping class="com.app.hospital.entity.SpecializationsEntity" />
 		<mapping class="com.app.hospital.entity.QualificationsEntity" />
+		<mapping class="com.app.hospital.entity.DoctorQualLinkEntity" />
 		<!-- Master -->
 		<mapping class="com.app.master.entity.StateEntity" />
 		<mapping class="com.app.master.entity.CountryEntity" />
