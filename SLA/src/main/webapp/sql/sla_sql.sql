@@ -128,33 +128,10 @@ CREATE TABLE hospital.tbl_appnt_setting
 fki_doctor_id  bigint , foreign key(fki_doctor_id) references usermanagement.tbl_user(pki_user_id),
 dt_date timestamp without time zone default timezone('utc'::text, now()),
 i_no_of_appnts_per_day int not null default 0,
-fki_hos_dept_type_id integer not null ,foreign key(fki_hos_dept_type_id) references hospital.tbl_hos_dept_type(pki_hos_dept_type_id),
+fki_hos_dept_type_id bigint not null ,foreign key(fki_hos_dept_type_id) references hospital.tbl_hos_dept_type(pki_hos_dept_type_id),
 t_description text
 );
 Alter table hospital.tbl_appnt_setting add column vc_time_slot varchar(100) not null;
- 
-hospital.tbl_appnt_setting
-
-CREATE TABLE hospital.tbl_appnt_setting
-(
-  pki_appnt_setting_id serial primary key NOT NULL,
-  fki_hospital_id  bigint , foreign key(fki_hospital_id) references usermanagement.tbl_user(pki_user_id),
-fki_doctor_id  bigint , foreign key(fki_doctor_id) references usermanagement.tbl_user(pki_user_id),
-dt_date timestamp without time zone default timezone('utc'::text, now()),
-i_no_of_appnts_per_day int not null default 0,
-fki_hos_dept_type_id integer not null ,foreign key(fki_hos_dept_type_id) references hospital.tbl_hos_dept_type(pki_hos_dept_type_id),
-t_description text
-);
-
-
-
-
-
-
-
-
-
-
 
 hospital.tbl_appnt_setting_det
 
@@ -362,3 +339,42 @@ ALTER TABLE usermanagement.tbl_address ADD COLUMN fki_country_id bigint;
 --21-09-2016-- Jinesh
 alter table hospital.tbl_hos_dept_type alter column fki_parent_dept_type_id drop not null;
 alter TABLE hospital.tbl_doctor_qualif_master alter column uvc_qualif_name set not null
+
+--27-09-2016-- Jinesh
+
+ 
+alter table hospital.tbl_appnt_setting alter column fki_hos_dept_type_id set data type bigint;
+
+hospital.tbl_doctor_exp
+
+CREATE TABLE hospital.tbl_doctor_exp
+(
+  pki_doctor_exp_id serial NOT NULL,
+  fki_doctor_id  bigint , foreign key(fki_doctor_id) references usermanagement.tbl_user(pki_user_id),
+  from_date timestamp without time zone not null,
+  to_date timestamp without time zone not null,
+  vc_hosp_name varchar(100),
+  fki_hos_dept_type_id bigint not null ,foreign key(fki_hos_dept_type_id) references hospital.tbl_hos_dept_type(pki_hos_dept_type_id),
+  t_description text,
+  i_months integer not null
+);
+
+hospital.tbl_doctor_dept_link
+
+CREATE TABLE hospital.tbl_doctor_dept_link
+(
+pki_doctor_dept_link_id serial primary key NOT NULL,
+fki_hos_dept_type_id  bigint , fki_parent_dept_type_id  bigint not null, foreign key(fki_hos_dept_type_id) references hospital.tbl_hos_dept_type(pki_hos_dept_type_id),
+fki_doctor_id  bigint , foreign key(fki_doctor_id) references usermanagement.tbl_user(pki_user_id)
+);
+
+
+hospital.tbl_doctor_dept_link
+
+CREATE TABLE hospital.tbl_hos_dept_link
+(
+pki_hos_dept_link_id serial primary key NOT NULL,
+fki_hos_dept_type_id  bigint , fki_parent_dept_type_id  bigint not null, foreign key(fki_hos_dept_type_id) references hospital.tbl_hos_dept_type(pki_hos_dept_type_id),
+fki_hospital_id  bigint , foreign key(fki_hospital_id) references usermanagement.tbl_user(pki_user_id)
+);
+
