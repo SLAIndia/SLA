@@ -74,9 +74,6 @@ public class UserController {
 		return response;
 	}
 
-	
-	
-	
 	@RequestMapping(value = "/isPhoneInUse", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
 	@ResponseBody
 	public AppResponse isPhoneAlreadyInUse(@RequestParam(value = "phone") String phone,
@@ -101,12 +98,13 @@ public class UserController {
 
 		return response;
 	}
-	
+
 	@RequestMapping(value = "/admin/approveUser", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public AppResponse approveUser(@RequestParam(value = "status") int status, @RequestParam(value = "userIds") Integer[] userIds) throws Exception {
+	public AppResponse approveUser(@RequestParam(value = "status") int status,
+			@RequestParam(value = "userIds") Integer[] userIds) throws Exception {
 		AppResponse response = new AppResponse();
-		response.put(AppResponse.DATA_FIELD, userService.approveUser(status,userIds));
+		response.put(AppResponse.DATA_FIELD, userService.approveUser(status, userIds));
 		return response;
 	}
 
