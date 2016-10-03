@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.app.hospital.entity.QualificationsEntity;
 import com.app.utils.RepositoryConstants;
 
-@Repository(RepositoryConstants.QUALIFICATIONS_DAO)
+@Repository(RepositoryConstants.DOCTOR_QUAL_LINK_DAO)
 public class DoctorQualLinkDaoImpl implements QualificationsDao{
 	private static final Logger logger = Logger.getLogger(DoctorQualLinkDaoImpl.class);
 	@Autowired
