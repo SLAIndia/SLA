@@ -5,35 +5,35 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.app.hospital.dao.QualificationsDao;
-import com.app.hospital.entity.QualificationsEntity;
+import com.app.hospital.dao.DoctorQualLinkDao;
+import com.app.hospital.entity.DoctorQualLinkEntity;
 import com.app.utils.ServiceConstants;
 
 @Service(ServiceConstants.QUALIFICATIONS_SERVICE)
-public class DoctorQualLinkServiceImpl implements QualificationsService {
+public class DoctorQualLinkServiceImpl implements DoctorQualLinkService {
 	@Autowired
-    private QualificationsDao qualificationsDao;
+    private DoctorQualLinkDao doctorQualLinkDao;
 	
 	@Override
-	public QualificationsEntity saveQualifications(QualificationsEntity objQualifications) throws Exception {
-		return qualificationsDao.saveQualifications(objQualifications);
+	public DoctorQualLinkEntity saveDoctorQualLink(DoctorQualLinkEntity objDoctorQualLink) throws Exception {
+		return doctorQualLinkDao.saveDoctorQualLink(objDoctorQualLink);
 	}
 
 	@Override
-	public List<QualificationsEntity> getQualifications() {
-		return qualificationsDao.getQualifications();
+	public List<DoctorQualLinkEntity> getDoctorQualLink(long pki_doctor_id) {
+		return doctorQualLinkDao.getDoctorQualLink(pki_doctor_id);
 	}
+	/*@Override
+	public DoctorQualLinkEntity getDoctorQualLink(long pki_doctor_qualif_master_id) {
+		return doctorQualLinkDao.getDoctorQualLink(pki_doctor_qualif_master_id);
+	}*/
 	@Override
-	public QualificationsEntity getQualification(long pki_doctor_qualif_master_id) {
-		return qualificationsDao.getQualification(pki_doctor_qualif_master_id);
-	}
-	@Override
-	public int deleteQualification(long pki_doctor_qualif_master_id) {
-		return qualificationsDao.deleteQualification(pki_doctor_qualif_master_id);
+	public int deleteDoctorQualLink(long pki_doctor_qualif_master_id) {
+		return doctorQualLinkDao.deleteDoctorQualLink(pki_doctor_qualif_master_id);
 	}
 
 	@Override
-	public QualificationsEntity getQualificationByName(String uvc_qualif_name) {
-		return qualificationsDao.getQualificationByName(uvc_qualif_name);
+	public DoctorQualLinkEntity getDoctorQualLinkByName(String uvc_qualif_name) {
+		return doctorQualLinkDao.getDoctorQualLinkByName(uvc_qualif_name);
 	}
 }

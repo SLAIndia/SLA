@@ -2,17 +2,17 @@ package com.app.hospital.service;
 
 import java.util.List;
 
-import com.app.hospital.entity.QualificationsEntity;
+import com.app.hospital.entity.DoctorQualLinkEntity;
 
 public interface DoctorQualLinkService {
-	QualificationsEntity saveQualifications(QualificationsEntity objQualifications) throws Exception;
+	DoctorQualLinkEntity saveDoctorQualLink(DoctorQualLinkEntity objDoctorQualLink) throws Exception;
 
-	List<QualificationsEntity> getQualifications();
+	List<DoctorQualLinkEntity> getDoctorQualLink(long pki_doctor_id);
 
-	QualificationsEntity getQualification(long pki_doctor_qualif_master_id);
+	//DoctorQualLinkEntity getDoctorQualLink(long pki_doctor_qualif_master_id);
 
-	int deleteQualification(long pki_doctor_qualif_master_id);
+	int deleteDoctorQualLink(long pki_doctor_qualif_master_id);
 
-	QualificationsEntity getQualificationByName(String uvc_qualif_name);
+	DoctorQualLinkEntity getDoctorQualLinkByName(String uvc_qualif_name);
 
 }

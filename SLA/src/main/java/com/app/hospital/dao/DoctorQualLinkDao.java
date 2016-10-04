@@ -2,12 +2,12 @@ package com.app.hospital.dao;
 
 import java.util.List;
 
-import com.app.hospital.entity.QualificationsEntity;
+import com.app.hospital.entity.DoctorQualLinkEntity;
 
 public interface DoctorQualLinkDao {
-	QualificationsEntity saveQualifications(QualificationsEntity objQualifications) throws Exception;
-	List<QualificationsEntity> getQualifications();
-	QualificationsEntity getQualification(long pki_doctor_qualif_master_id);
-	int deleteQualification(long pki_doctor_qualif_master_id);
-	QualificationsEntity getQualificationByName(String uvc_qualif_name);
+	DoctorQualLinkEntity saveDoctorQualLink(DoctorQualLinkEntity objDoctorQualLink) throws Exception;
+	List<DoctorQualLinkEntity> getDoctorQualLink(long pki_doctor_id);
+	//DoctorQualLinkEntity getDoctorQualLink(long pki_doctor_qualif_master_id);
+	int deleteDoctorQualLink(long pki_doctor_qualif_master_id);
+	DoctorQualLinkEntity getDoctorQualLinkByName(String uvc_qualif_name);
 }
