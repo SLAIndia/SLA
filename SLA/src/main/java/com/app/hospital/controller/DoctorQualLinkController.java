@@ -5,6 +5,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,12 +18,13 @@ public class DoctorQualLinkController {
 	private static final Logger logger = Logger.getLogger(DoctorQualLinkController.class);
 	@Autowired
 	private DoctorQualLinkService qualificationsService;
-	@RequestMapping( value ="/getDoctorQualifications/{pki_doctor_id}",method = RequestMethod.GET,
+	@RequestMapping( value ="/getDoctorQualifications",method = RequestMethod.GET,
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody AppResponse getDoctorQualLink(@PathVariable("pki_doctor_id") long pki_doctor_id) throws Exception {
+	public @ResponseBody AppResponse getDoctorQualLink(@RequestParam(value = "pki_doctor_id") long pki_doctor_id,
+			@RequestParam(value = "uvc_qualif_name", required = false)  String uvc_qualif_name) throws Exception {
 		AppResponse response = new AppResponse();
 		try {
-			response.put(AppResponse.DATA_FIELD, qualificationsService.getDoctorQualLink(pki_doctor_id));
+			response.put(AppResponse.DATA_FIELD, qualificationsService.getDoctorQualLink(pki_doctor_id,uvc_qualif_name));
 		} catch (Exception e) {
 			logger.error("error in getDoctorQualLink :"+e.getMessage());
 		}

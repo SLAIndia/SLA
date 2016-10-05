@@ -22,12 +22,14 @@ create extension pgcrypto;
 CREATE TYPE hospital.typ_doct_qual_link AS(
 	fki_doctor_id bigint,     
 	uvc_qualif_name varchar, 
-	t_description varchar
+	qual_comments varchar,
+	doct_qual_desc varchar,
 );
 
 
 
 --====================================== usermanagement.fn_doct_qual_sel================================================================
+
 
 
 CREATE OR REPLACE FUNCTION hospital.fn_doct_qual_sel(tmp_fki_doctor_id in bigint,tmp_uvc_qualif_name in varchar)
@@ -40,12 +42,12 @@ CREATE OR REPLACE FUNCTION hospital.fn_doct_qual_sel(tmp_fki_doctor_id in bigint
 
 	BEGIN
 		if tmp_fki_doctor_id = 0 then
-			queryString:='select fki_doctor_id,uvc_qualif_name,t_description
-    		from hospital.tbl_doctor_qualif_link inner join hospital.tbl_doctor_qualif_master
-    		on(pki_doctor_qualif_master_id = fki_doctor_qualif_master_id) where UPPER(uvc_qualif_name) =  UPPER('''||tmp_uvc_qualif_name||''')';
+			queryString:='select fki_doctor_id,uvc_qualif_name,coalesce(qualif.t_description,'''') as qaulif_comments,coalesce(link.t_description,'''') as doct_qual_desc
+    		from hospital.tbl_doctor_qualif_link link inner join hospital.tbl_doctor_qualif_master qualif
+    		on(pki_doctor_qualif_master_id = fki_doctor_qualif_master_id) where UPPER(uvc_qualif_name) in(UPPER('''||tmp_uvc_qualif_name||'''))';
 		elsif tmp_uvc_qualif_name is not null then
-			queryString:='select fki_doctor_id,uvc_qualif_name,t_description
-    		from hospital.tbl_doctor_qualif_link inner join hospital.tbl_doctor_qualif_master
+			queryString:='select fki_doctor_id,uvc_qualif_name,coalesce(qualif.t_description,'''') as qaulif_comments,coalesce(link.t_description,'''') as doct_qual_desc
+    		from hospital.tbl_doctor_qualif_link link inner join hospital.tbl_doctor_qualif_master qualif
     		on(pki_doctor_qualif_master_id = fki_doctor_qualif_master_id) where fki_doctor_id = '||tmp_fki_doctor_id;
     	end if;
 	RAISE NOTICE 'select-->> %',	queryString;

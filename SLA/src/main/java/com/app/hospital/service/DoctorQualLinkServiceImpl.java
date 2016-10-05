@@ -1,5 +1,6 @@
 package com.app.hospital.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import com.app.hospital.dao.DoctorQualLinkDao;
 import com.app.hospital.entity.DoctorQualLinkEntity;
 import com.app.utils.ServiceConstants;
 
-@Service(ServiceConstants.QUALIFICATIONS_SERVICE)
+@Service(ServiceConstants.DOCTOR_QUAL_LINK_SERVICE)
 public class DoctorQualLinkServiceImpl implements DoctorQualLinkService {
 	@Autowired
     private DoctorQualLinkDao doctorQualLinkDao;
@@ -20,8 +21,8 @@ public class DoctorQualLinkServiceImpl implements DoctorQualLinkService {
 	}
 
 	@Override
-	public List<DoctorQualLinkEntity> getDoctorQualLink(long pki_doctor_id) {
-		return doctorQualLinkDao.getDoctorQualLink(pki_doctor_id);
+	public List<HashMap<String, Object>> getDoctorQualLink(long pki_doctor_id,String uvc_qualif_name) {
+		return doctorQualLinkDao.getDoctorQualLink(pki_doctor_id,uvc_qualif_name);
 	}
 	/*@Override
 	public DoctorQualLinkEntity getDoctorQualLink(long pki_doctor_qualif_master_id) {

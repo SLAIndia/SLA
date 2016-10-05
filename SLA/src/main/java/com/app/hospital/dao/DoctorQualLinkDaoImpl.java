@@ -1,11 +1,13 @@
 
 package com.app.hospital.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+import org.hibernate.transform.AliasToEntityMapResultTransformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,15 +35,24 @@ public class DoctorQualLinkDaoImpl implements DoctorQualLinkDao{
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<DoctorQualLinkEntity> getDoctorQualLink(long pki_doctor_id) {
-
-		List<DoctorQualLinkEntity> result =null;
-		try {
-			result =  this.sessionFactory.getCurrentSession().createCriteria(DoctorQualLinkEntity.class).list();
-		} catch (Exception e) {
-			logger.error("Error in getDoctorQualLink Method " + e.getMessage());
-		}
-		return result;
+	public List<HashMap<String, Object>> getDoctorQualLink(long pki_doctor_id,String uvc_qualif_name) {
+		 String sql = "SELECT * FROM hospital.fn_doct_qual_sel(:pki_doctor_id,:uvc_qualif_name)";
+		 List<HashMap<String, Object>> aliasToValueMapList = null;
+		  try {
+			  
+				Query query = this.sessionFactory
+                .getCurrentSession()
+                .createSQLQuery(sql)
+                .setResultTransformer(
+                        AliasToEntityMapResultTransformer.INSTANCE);
+		query.setParameter("pki_doctor_id",pki_doctor_id); // 0 list all breeding details
+		query.setParameter("uvc_qualif_name",uvc_qualif_name); // 0 list all kids in the breed
+		aliasToValueMapList = query.list(); 
+		  }catch(Exception e){
+			  e.printStackTrace();
+			  logger.error("Error in getDoctorQualLink Method "+e.getMessage());
+		  }
+		return aliasToValueMapList;
 
 	}
 
@@ -93,7 +104,6 @@ public class DoctorQualLinkDaoImpl implements DoctorQualLinkDao{
 		int status = 0;
 	
 		try {
-			
 			String sql = "delete DoctorQualLinkEntity where pki_doctor_qualif_master_id = :pki_doctor_qualif_master_id  ";
 			Query query = this.sessionFactory.getCurrentSession().createQuery(sql);
 			query.setParameter("pki_doctor_qualif_master_id", pki_doctor_qualif_master_id);
