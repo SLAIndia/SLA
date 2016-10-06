@@ -6,8 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.app.usermanagement.entity.UserEntity;
@@ -26,11 +25,11 @@ public class DoctorQualLinkEntity {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long pki_doctor_qualif_link_id;
 	  
-    @OneToOne
+    @ManyToOne
 	@JoinColumn(name = "fki_doctor_qualif_master_id")
 	private QualificationsEntity objQualificationsEntity;
     
-    @OneToOne
+    @ManyToOne
    	@JoinColumn(name = "fki_doctor_id")
    	private UserEntity objUserEntity;
     

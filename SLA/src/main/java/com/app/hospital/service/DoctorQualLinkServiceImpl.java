@@ -14,27 +14,21 @@ import com.app.utils.ServiceConstants;
 public class DoctorQualLinkServiceImpl implements DoctorQualLinkService {
 	@Autowired
     private DoctorQualLinkDao doctorQualLinkDao;
-	
+
 	@Override
 	public DoctorQualLinkEntity saveDoctorQualLink(DoctorQualLinkEntity objDoctorQualLink) throws Exception {
 		return doctorQualLinkDao.saveDoctorQualLink(objDoctorQualLink);
 	}
-
 	@Override
 	public List<HashMap<String, Object>> getDoctorQualLink(long pki_doctor_id,String uvc_qualif_name) {
 		return doctorQualLinkDao.getDoctorQualLink(pki_doctor_id,uvc_qualif_name);
 	}
-	/*@Override
-	public DoctorQualLinkEntity getDoctorQualLink(long pki_doctor_qualif_master_id) {
-		return doctorQualLinkDao.getDoctorQualLink(pki_doctor_qualif_master_id);
-	}*/
 	@Override
-	public int deleteDoctorQualLink(long pki_doctor_qualif_master_id) {
-		return doctorQualLinkDao.deleteDoctorQualLink(pki_doctor_qualif_master_id);
+	public int deleteDoctorQualLink(long pki_doctor_qualif_link_id) {
+		return doctorQualLinkDao.deleteDoctorQualLink(pki_doctor_qualif_link_id);
 	}
-
 	@Override
-	public DoctorQualLinkEntity getDoctorQualLinkByName(String uvc_qualif_name) {
-		return doctorQualLinkDao.getDoctorQualLinkByName(uvc_qualif_name);
-	}
+	public DoctorQualLinkEntity getDoctorQualLinkByIds(Long qulaifId, Integer doctorId){
+			return doctorQualLinkDao.getDoctorQualLinkByIds(qulaifId,doctorId);
+			}
 }

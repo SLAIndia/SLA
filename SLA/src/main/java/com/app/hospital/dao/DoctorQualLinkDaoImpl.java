@@ -77,36 +77,15 @@ public class DoctorQualLinkDaoImpl implements DoctorQualLinkDao{
 
 	}*/
 
-	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public DoctorQualLinkEntity getDoctorQualLinkByName(String uvc_qualif_name) {
-
-		String sql = "from DoctorQualLinkEntity where uvc_qualif_name =:uvc_qualif_name";
-		DoctorQualLinkEntity obj =null;
-		try {
-			Query query = this.sessionFactory.getCurrentSession().createQuery(sql);
-			query.setParameter("uvc_qualif_name", uvc_qualif_name);
-			List<DoctorQualLinkEntity> result =  query.list();
-			if(result != null && result.size()>0){
-				obj = (DoctorQualLinkEntity) result.get(0);
-			}
-		} catch (Exception e) {
-			logger.error("Error in getDoctorQualLink Method " + e.getMessage());
-		}
-		return obj;
-
-	}
-	
-	@Override
-	@Transactional
-	public int deleteDoctorQualLink(long pki_doctor_qualif_master_id){
+	public int deleteDoctorQualLink(long pki_doctor_qualif_link_id){
 		int status = 0;
 	
 		try {
-			String sql = "delete DoctorQualLinkEntity where pki_doctor_qualif_master_id = :pki_doctor_qualif_master_id  ";
+			String sql = "delete DoctorQualLinkEntity where pki_doctor_qualif_link_id = :pki_doctor_qualif_link_id  ";
 			Query query = this.sessionFactory.getCurrentSession().createQuery(sql);
-			query.setParameter("pki_doctor_qualif_master_id", pki_doctor_qualif_master_id);
+			query.setParameter("pki_doctor_qualif_link_id", pki_doctor_qualif_link_id);
 			status = query.executeUpdate();
 		} catch (Exception e) {
 			status = 0;
@@ -114,6 +93,28 @@ public class DoctorQualLinkDaoImpl implements DoctorQualLinkDao{
 			
 		}
 		return status;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public DoctorQualLinkEntity getDoctorQualLinkByIds(Long qulaifId, Integer doctorId) {
+
+		String sql = "from DoctorQualLinkEntity where objQualificationsEntity.pki_doctor_qualif_master_id =:qulaifId and objUserEntity.id =:doctorId";
+		DoctorQualLinkEntity obj =null;
+		try {
+			Query query = this.sessionFactory.getCurrentSession().createQuery(sql);
+			query.setParameter("qulaifId", qulaifId);
+			query.setParameter("doctorId", doctorId);
+			List<DoctorQualLinkEntity> result =  query.list();
+			if(result != null && result.size()>0){
+				obj = (DoctorQualLinkEntity) result.get(0);
+			}
+		} catch (Exception e) {
+			logger.error("Error in getDoctorQualLinkByIds Method " + e.getMessage());
+		}
+		return obj;
+
 	}
 
 }
