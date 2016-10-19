@@ -362,3 +362,4 @@ ALTER TABLE usermanagement.tbl_address ADD COLUMN fki_country_id bigint;
 --21-09-2016-- Jinesh
 alter table hospital.tbl_hos_dept_type alter column fki_parent_dept_type_id drop not null;
 alter TABLE hospital.tbl_doctor_qualif_master alter column uvc_qualif_name set not null
+insert into hospital.tbl_doctor_qualif_master(uvc_qualif_name,t_description) values ('MBBS','Bachelor Degree');
