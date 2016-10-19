@@ -8,4 +8,5 @@ public class RepositoryConstants {
 	public static final String SUBSCRIPTION_DAO = "subscriptionDao";
 	public static final String USER_DAO = "userDao";
 	public static final String QUALIFICATIONS_DAO = "qualificationsDAO";
+	public static final String DOCTOR_QUAL_LINK_DAO = "doctorQualLinkDAO";
 }

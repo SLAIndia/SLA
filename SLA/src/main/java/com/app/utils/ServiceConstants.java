@@ -7,5 +7,7 @@ public class ServiceConstants {
 	public static final String USER_TYPE_SERVICE = "UserTypeService";
 	public static final String SUBSCRIPTION_SERVICE = "SubscriptionService";
 	public static final String USER_SERVICE = "USER_SERVICE";
+	public static final String USER_MESSAGE_SERVICE = "UserMessageService";
 	public static final String QUALIFICATIONS_SERVICE = "qualificationsService";
+	public static final String DOCTOR_QUAL_LINK_SERVICE = "doctorQualLinkService";
 }

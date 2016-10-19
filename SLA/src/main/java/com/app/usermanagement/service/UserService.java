@@ -21,5 +21,5 @@ public interface UserService {
 
 	public boolean deleteUser(int userTypeId) throws Exception;
 
-	public boolean approveUser(int status, String[] userIds) throws Exception;
+	public boolean approveUser(int status, Integer[] userIds) throws Exception;
 }

@@ -15,6 +15,8 @@ import com.app.utils.AppException;
 import com.app.utils.AppMessage;
 import com.app.utils.AppUtil;
 import com.app.utils.Common;
+import com.app.utils.EmailTemplate;
+import com.app.utils.HtmlReader;
 import com.app.utils.RandomString;
 import com.app.utils.ServiceConstants;
 
@@ -22,6 +24,9 @@ import com.app.utils.ServiceConstants;
 public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDao userDao;
+
+	@Autowired
+	private UserMessageService userMessageService;
 
 	@Override
 	public List<UserDetailsEntity> getUsers() throws Exception {
@@ -62,8 +67,7 @@ public class UserServiceImpl implements UserService {
 			userDao.saveUserAddresses(userDetails.getAddresses(), user);
 		}
 
-		// sendRegisterMessageToUser(userDetails);
-
+		userMessageService.sendRegistrationMail(userDetails);
 	}
 
 	@Override
@@ -159,13 +163,9 @@ public class UserServiceImpl implements UserService {
 
 	}
 
-	private void sendRegisterMessageToUser(UserDetailsEntity userDetails) {
-
-	}
-
 	@Override
-	public boolean approveUser(int status, String[] userIds) throws Exception {
-		return userDao.approveUser(status,userIds);
+	public boolean approveUser(int status, Integer[] userIds) throws Exception {
+		return userDao.approveUser(status, userIds);
 	}
-	
+
 }

@@ -128,8 +128,12 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public boolean approveUser(int status, String[] userIds) {
-		// TODO Auto-generated method stub
-		return false;
+	@Transactional
+	public boolean approveUser(int status, Integer[] userIds) {
+		String sql = "update UserEntity userEntity set userEntity.userStatus = :userStatus where userEntity.id in (:userIds)";
+		Query query = this.sessionFactory.getCurrentSession().createQuery(sql);
+		query.setParameter("userStatus", status);
+		query.setParameterList("userIds", userIds);
+		return query.executeUpdate() > 0;
 	}
 }

@@ -29,5 +29,5 @@ public interface UserDao {
 
 	public void updateUserAddresses(List<UserAddressEntity> addresses, UserEntity userEntity);
 
-	public boolean approveUser(int status, String[] userIds);
+	public boolean approveUser(int status, Integer[] userIds);
 }
