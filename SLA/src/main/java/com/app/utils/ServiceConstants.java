@@ -10,4 +10,5 @@ public class ServiceConstants {
 	public static final String USER_MESSAGE_SERVICE = "UserMessageService";
 	public static final String QUALIFICATIONS_SERVICE = "qualificationsService";
 	public static final String DOCTOR_QUAL_LINK_SERVICE = "doctorQualLinkService";
+	public static final String DOCTOR_EXP_LINK_SERVICE = "doctorExpService";
 }

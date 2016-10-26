@@ -12,30 +12,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.app.hospital.entity.DoctorQualLinkEntity;
+import com.app.hospital.entity.DoctorExpEntity;
 import com.app.utils.RepositoryConstants;
 
-@Repository(RepositoryConstants.DOCTOR_QUAL_LINK_DAO)
-public class DoctorExpDaoImpl implements DoctorQualLinkDao{
+@Repository(RepositoryConstants.DOCTOR_EXP_LINK_DAO)
+public class DoctorExpDaoImpl implements DoctorExpDao{
 	private static final Logger logger = Logger.getLogger(DoctorExpDaoImpl.class);
 	@Autowired
 	private SessionFactory sessionFactory;
 
 	@Override
 	@Transactional
-	public DoctorQualLinkEntity saveDoctorQualLink(DoctorQualLinkEntity objDoctorQualLink) throws Exception {
+	public DoctorExpEntity saveDoctorExp(DoctorExpEntity objDoctorExp) throws Exception {
 		try {	
-			this.sessionFactory.getCurrentSession().saveOrUpdate(objDoctorQualLink);			
+			this.sessionFactory.getCurrentSession().saveOrUpdate(objDoctorExp);			
 		} catch (Exception e) {
-			logger.error("Error in saveDoctorQualLink " + e.getMessage(), e);
+			logger.error("Error in saveDoctorExp " + e.getMessage(), e);
 		}
-		return objDoctorQualLink;
+		return objDoctorExp;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<HashMap<String, Object>> getDoctorQualLink(long pki_doctor_id,String uvc_qualif_name) {
+	public List<HashMap<String, Object>> getDoctorExp(long pki_doctor_id,String uvc_qualif_name) {
 		 String sql = "SELECT * FROM hospital.fn_doct_qual_sel(:pki_doctor_id,:uvc_qualif_name)";
 		 List<HashMap<String, Object>> aliasToValueMapList = null;
 		  try {
@@ -50,7 +50,7 @@ public class DoctorExpDaoImpl implements DoctorQualLinkDao{
 		aliasToValueMapList = query.list(); 
 		  }catch(Exception e){
 			  e.printStackTrace();
-			  logger.error("Error in getDoctorQualLink Method "+e.getMessage());
+			  logger.error("Error in getDoctorExp Method "+e.getMessage());
 		  }
 		return aliasToValueMapList;
 
@@ -59,19 +59,19 @@ public class DoctorExpDaoImpl implements DoctorQualLinkDao{
 	/*@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public DoctorQualLinkEntity getDoctorQualLink(long pki_doctor_qualif_master_id) {
+	public DoctorExpEntity getDoctorExp(long pki_doctor_qualif_master_id) {
 
-		String sql = "from DoctorQualLinkEntity where pki_doctor_qualif_master_id =:pki_doctor_qualif_master_id";
-		DoctorQualLinkEntity obj =null;
+		String sql = "from DoctorExpEntity where pki_doctor_qualif_master_id =:pki_doctor_qualif_master_id";
+		DoctorExpEntity obj =null;
 		try {
 			Query query = this.sessionFactory.getCurrentSession().createQuery(sql);
 			query.setParameter("pki_doctor_qualif_master_id", pki_doctor_qualif_master_id);
-			List<DoctorQualLinkEntity> result =  query.list();
+			List<DoctorExpEntity> result =  query.list();
 			if(result != null && result.size()>0){
-				obj = (DoctorQualLinkEntity) result.get(0);
+				obj = (DoctorExpEntity) result.get(0);
 			}
 		} catch (Exception e) {
-			logger.error("Error in getDoctorQualLink Method " + e.getMessage());
+			logger.error("Error in getDoctorExp Method " + e.getMessage());
 		}
 		return obj;
 
@@ -79,17 +79,17 @@ public class DoctorExpDaoImpl implements DoctorQualLinkDao{
 
 	@Override
 	@Transactional
-	public int deleteDoctorQualLink(long pki_doctor_qualif_link_id){
+	public int deleteDoctorExp(long pki_doctor_qualif_link_id){
 		int status = 0;
 	
 		try {
-			String sql = "delete DoctorQualLinkEntity where pki_doctor_qualif_link_id = :pki_doctor_qualif_link_id  ";
+			String sql = "delete DoctorExpEntity where pki_doctor_qualif_link_id = :pki_doctor_qualif_link_id  ";
 			Query query = this.sessionFactory.getCurrentSession().createQuery(sql);
 			query.setParameter("pki_doctor_qualif_link_id", pki_doctor_qualif_link_id);
 			status = query.executeUpdate();
 		} catch (Exception e) {
 			status = 0;
-			logger.error("Error in deleteDoctorQualLink method "+ e.getMessage());
+			logger.error("Error in deleteDoctorExp method "+ e.getMessage());
 			
 		}
 		return status;
@@ -98,20 +98,20 @@ public class DoctorExpDaoImpl implements DoctorQualLinkDao{
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public DoctorQualLinkEntity getDoctorQualLinkByIds(Long qulaifId, Integer doctorId) {
+	public DoctorExpEntity getDoctorExpByIds(Long qulaifId, Integer doctorId) {
 
-		String sql = "from DoctorQualLinkEntity where objQualificationsEntity.pki_doctor_qualif_master_id =:qulaifId and objUserEntity.id =:doctorId";
-		DoctorQualLinkEntity obj =null;
+		String sql = "from DoctorExpEntity where objQualificationsEntity.pki_doctor_qualif_master_id =:qulaifId and objUserEntity.id =:doctorId";
+		DoctorExpEntity obj =null;
 		try {
 			Query query = this.sessionFactory.getCurrentSession().createQuery(sql);
 			query.setParameter("qulaifId", qulaifId);
 			query.setParameter("doctorId", doctorId);
-			List<DoctorQualLinkEntity> result =  query.list();
+			List<DoctorExpEntity> result =  query.list();
 			if(result != null && result.size()>0){
-				obj = (DoctorQualLinkEntity) result.get(0);
+				obj = (DoctorExpEntity) result.get(0);
 			}
 		} catch (Exception e) {
-			logger.error("Error in getDoctorQualLinkByIds Method " + e.getMessage());
+			logger.error("Error in getDoctorExpByIds Method " + e.getMessage());
 		}
 		return obj;
 
