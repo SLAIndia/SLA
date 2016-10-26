@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
 
 		String password = new RandomString(6).nextString().toUpperCase();
 		Timestamp currentTime = Common.getCurrentTimestamp();
-
+ 
 		user.setPassword(AppUtil.getMD5(password));
 		user.setUpdatedDt(currentTime);
 		user.setCreatedDt(currentTime);
@@ -67,7 +67,7 @@ public class UserServiceImpl implements UserService {
 			userDao.saveUserAddresses(userDetails.getAddresses(), user);
 		}
 
-		userMessageService.sendRegistrationMail(userDetails);
+		//userMessageService.sendRegistrationMail(userDetails);
 	}
 
 	@Override

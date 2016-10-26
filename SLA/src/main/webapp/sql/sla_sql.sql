@@ -340,6 +340,9 @@ ALTER TABLE usermanagement.tbl_address ADD COLUMN fki_country_id bigint;
 alter table hospital.tbl_hos_dept_type alter column fki_parent_dept_type_id drop not null;
 alter TABLE hospital.tbl_doctor_qualif_master alter column uvc_qualif_name set not null
 
+insert into hospital.tbl_doctor_qualif_master(uvc_qualif_name,t_description) values ('MBBS','Bachelor Degree');
+
+
 --27-09-2016-- Jinesh
 
  
@@ -380,4 +383,5 @@ fki_hospital_id  bigint , foreign key(fki_hospital_id) references usermanagement
 
 alter table usermanagement.tbl_user_details add column i_gender integer not null default 0;
 alter table usermanagement.tbl_user_details add column dt_dob timestamp ;
+
 

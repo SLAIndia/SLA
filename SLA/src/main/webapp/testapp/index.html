@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<title>Testing app</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<body>
+
+
+
+
+	<div class="columns">
+		<ul class="price">
+			<li class="header">TEST User Details</li>
+
+			<li id="userLoginToken"></li>
+			<li><strong>Expiration Time</strong> <span id="expirationTime"></span></li>
+			<li class="grey"><strong>Title</strong> <span
+				id="loginUserTitle"></span></li>
+			<li class="grey"><strong>Name</strong> <span id="loginUserName"></span></li>
+			<li class="grey"><strong>Roles</strong> <span
+				id="loginUserRoles"></span></li>
+			<li><strong>Token</strong></li>
+
+			<li class="grey"><a href="javascript:void(0)"
+				onclick="document.getElementById('loginModal').style.display='block'"
+				class="button"> Login </a>
+				<p>Or</p> <a href="javascript:void(0)" class="button">Sign Up</a></li>
+		</ul>
+	</div>
+	<div class="columns" style="display:none;">
+		<ul class="price">
+			<li class="header">TEST User Actions</li>
+			<li class="grey"><strong>View Details(User)</strong> <a
+				href="javascript:void(0)" class="button" id="userDetailsBtn">click
+					here</a></li>
+
+			<li class="grey"><strong>Consumer Details(User)</strong> <a
+				href="javascript:void(0)" class="button" id="consumerDetailsBtn">click
+					here</a></li>
+
+			<li class="grey"><strong>Provider Details(User)</strong> <a
+				href="javascript:void(0)" class="button" id="providerDetailsBtn">click
+					here</a></li>
+
+			<li id="responseCont"></li>
+		</ul>
+	</div>
+
+	<div id="loginModal" class="modal">
+
+		<form class="modal-content animate" id="userLoginForm">
+
+			<div class="container">
+				<label><b>Username</b></label> <input type="text"
+					placeholder="Enter Username" name="uname" id="uname"
+					value="q1@gmail.com" required> <label><b>Password</b></label>
+				<input type="password" placeholder="Enter Password" name="psw"
+					id="password" value="LWSWSQ" required>
+
+				<button type="submit">Login</button>
+				<input type="checkbox" checked="checked"> Remember me
+			</div>
+
+			<div class="container" style="background-color: #f1f1f1">
+				<button type="button"
+					onclick="document.getElementById('loginModal').style.display='none'"
+					class="cancelbtn">Cancel</button>
+				<span class="psw">Forgot <a href="#">password?</a></span>
+			</div>
+		</form>
+	</div>
+	<script type="text/javascript" src="js/lib/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="js/AppConstants.js"></script>
+	<script type="text/javascript" src="js/AjaxService.js"></script>
+	<script type="text/javascript" src="js/appEventHandlers.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+
+
+</body>
+</html>
+
