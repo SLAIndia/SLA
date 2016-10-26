@@ -5,23 +5,26 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class EmailTemplate {
-
+	private final String USER_MAIL_HEADER = "email-templates/Header.html";
+	private final String USER_MAIL_FOOTER = "email-templates/Footer.html";
 	private String header;
 
 	private String footer;
 
+
+
 	public EmailTemplate() {
 		try {
-			this.header = new String(Files.readAllBytes(Paths.get(EmailTemplate.class.getClassLoader().getResource("email-templates/Header.html").getPath())));
-			this.footer = new String(Files.readAllBytes(Paths.get(EmailTemplate.class.getClassLoader().getResource("email-templates/Footer.html").getPath())));
-		
-			
+			this.header = new String(Files.readAllBytes(
+					Paths.get(EmailTemplate.class.getClassLoader().getResource(USER_MAIL_HEADER).getPath())));
+			this.footer = new String(Files.readAllBytes(
+					Paths.get(EmailTemplate.class.getClassLoader().getResource(USER_MAIL_FOOTER).getPath())));
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
 	}
 
 	public String getContents(String body) {
