@@ -19,6 +19,7 @@ public class AppJwtTokenUtil implements Serializable {
 	private static final long serialVersionUID = -3301605591108950415L;
 
 	static final String CLAIM_KEY_USERNAME = "sub";
+	static final String CLAIM_KEY_USER_OBJECT = "sub";
 	static final String CLAIM_KEY_AUDIENCE = "audience";
 	static final String CLAIM_KEY_CREATED = "created";
 
@@ -27,14 +28,14 @@ public class AppJwtTokenUtil implements Serializable {
 	private static final String AUDIENCE_MOBILE = "mobile";
 	private static final String AUDIENCE_TABLET = "tablet";
 
-	   /*@Value("${jwt.secret}")
-    private String secret;
+	/*
+	 * @Value("${jwt.secret}") private String secret;
+	 * 
+	 * @Value("${jwt.expiration}") private Long expiration;
+	 */
 
-    @Value("${jwt.expiration}")
-    private Long expiration;*/
-    
-    private String secret = "554dddd";
-    private Long expiration = 604800L;
+	private String secret = "554dddd";
+	private Long expiration = 604800L;
 
 	public String getUsernameFromToken(String token) {
 		String username;
@@ -127,10 +128,11 @@ public class AppJwtTokenUtil implements Serializable {
 		claims.put(CLAIM_KEY_CREATED, new Date());
 		return generateToken(claims);
 	}
-	
+
 	public String generateToken(UserDetails userDetails) {
 		Map<String, Object> claims = new HashMap<>();
-		claims.put(CLAIM_KEY_USERNAME, userDetails.getUsername());		
+		claims.put(CLAIM_KEY_USERNAME, userDetails.getUsername());
+		claims.put(CLAIM_KEY_USER_OBJECT, userDetails);
 		claims.put(CLAIM_KEY_CREATED, new Date());
 		return generateToken(claims);
 	}
@@ -159,11 +161,23 @@ public class AppJwtTokenUtil implements Serializable {
 	}
 
 	public Boolean validateToken(String token, UserDetails userDetails) {
-		AppJwtUser user = (AppJwtUser) userDetails;
+		AppAuthUser user = (AppAuthUser) userDetails;
 		final String username = getUsernameFromToken(token);
 		final Date created = getCreatedDateFromToken(token);
 		// final Date expiration = getExpirationDateFromToken(token);
 		return (username.equals(user.getUsername()) && !isTokenExpired(token)
-				&& !isCreatedBeforeLastPasswordReset(created, user.getLastPasswordResetDate()));
+				&& !isCreatedBeforeLastPasswordReset(created, null));
+	}
+
+	public AppAuthUser getUserDetailsFromToken(String token) {
+		Claims claims;
+		AppAuthUser appJwtUser;
+		try {
+			claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
+			appJwtUser = (AppAuthUser) claims.get("CLAIM_KEY_USER_OBJECT");
+		} catch (Exception e) {
+			appJwtUser = null;
+		}
+		return appJwtUser;
 	}
 }

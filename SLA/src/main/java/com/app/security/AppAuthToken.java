@@ -7,8 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 
 public class AppAuthToken implements Authentication {
 
-	private static final long serialVersionUID = 481643972334484579L;
-	
+	private static final long serialVersionUID = 146252093978281053L;
 	private final String token;
 
 	public AppAuthToken(String token) {

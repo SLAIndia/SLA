@@ -137,20 +137,20 @@ span.psw {
 .price .header {
     background-color: #111;
     color: white;
-    font-size: 25px;
+    font-size: 15px;
 }
 
 /* List items */
 .price li {
     border-bottom: 1px solid #eee;
-    padding: 20px;
+    padding: 12px;
     text-align: center;
 }
 
 /* Grey list item */
 .price .grey {
     background-color: #eee;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 /* The "Sign Up" button */
@@ -161,7 +161,7 @@ span.psw {
     padding: 10px 25px;
     text-align: center;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 /* Change the width of the three columns to 100% 

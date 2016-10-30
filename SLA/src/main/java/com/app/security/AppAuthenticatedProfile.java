@@ -1,25 +1,36 @@
 package com.app.security;
 
 import java.util.Collection;
-import java.util.Collections;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-public class AppJwtAuthenticatedProfile implements Authentication {
+public class AppAuthenticatedProfile implements Authentication {
 
-	private final AppJwtUser appJwtUser;
+	private static final long serialVersionUID = -8591530027320478552L;
 
-	public AppJwtAuthenticatedProfile(AppJwtUser appJwtUser) {
+	private final AppAuthUser appJwtUser;
+
+
+
+
+	public AppAuthenticatedProfile(AppAuthUser appJwtUser) {
 		this.appJwtUser = appJwtUser;
+
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return appJwtUser.getAuthorities().stream().map(s -> new SimpleGrantedAuthority(s.getAuthority()))
-				.collect(Collectors.toList());
+		if (null != appJwtUser && null != appJwtUser.getAuthorities()) {
+
+			return appJwtUser.getAuthorities().stream().map(s -> new SimpleGrantedAuthority(s.getAuthority()))
+					.collect(Collectors.toList());
+		} else {
+			return null;
+		}
 
 	}
 

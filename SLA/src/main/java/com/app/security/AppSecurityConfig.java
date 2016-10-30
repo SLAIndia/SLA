@@ -50,7 +50,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/consumer/*")
                 .hasAuthority("CONSUMER")
                 .antMatchers("/provider/*")
-                .hasAuthority("PROVIDER")
+                .hasAuthority("CONSUMER")
                 .and()
                 .addFilterBefore(appAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling().accessDeniedHandler(new AppAccessDeniedHandler())

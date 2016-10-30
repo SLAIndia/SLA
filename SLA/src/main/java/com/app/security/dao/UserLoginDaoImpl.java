@@ -20,12 +20,12 @@ public class UserLoginDaoImpl implements UserLoginDao {
 	@Override
 	@Transactional
 	public UserDetailsEntity login(String username, String password) throws Exception {
-		Criteria cr = sessionFactory.getCurrentSession().createCriteria(UserDetailsEntity.class,"userDetails");
+		Criteria cr = sessionFactory.getCurrentSession().createCriteria(UserDetailsEntity.class, "userDetails");
 		cr.createAlias("userDetails.user", "userObj");
 		cr.add(Restrictions.eq("userObj.username", username));
 		cr.add(Restrictions.eq("userObj.password", AppUtil.getMD5(password)));
+		cr.add(Restrictions.eq("userObj.userStatus", 1));
 		return (UserDetailsEntity) cr.uniqueResult();
 	}
-
 
 }

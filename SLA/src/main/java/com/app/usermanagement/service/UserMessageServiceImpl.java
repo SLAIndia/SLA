@@ -39,8 +39,11 @@ public class UserMessageServiceImpl implements UserMessageService {
 	}
 
 	@Override
-	public void sendRegistrationSMS(UserDetailsEntity userDetails) throws Exception {
-		// TODO Auto-generated method stub
+	public void sendRegistrationSMS(UserDetailsEntity userDetails, String password) throws Exception {
+		String smsMsg = "Your SLA account created";
+		smsMsg+= "Username : "+ userDetails.getUser().getUsername();
+		smsMsg+= "Password : "+ password;
+		// invoke SMS sending code  (smsMsg,userDetails.getPhone1());
 
 	}
 

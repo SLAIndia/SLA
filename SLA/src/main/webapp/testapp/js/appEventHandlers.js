@@ -71,9 +71,8 @@ var appEventHandlers = (function() {
 		},
 		showUserDetails : function(){		
 			
-			let userName = localStorage.getItem('username');
 			let requestObj = {
-				url : AppConstants.get("URL")["PROFILE_DETAILS"]+userName,
+				url : AppConstants.get("URL")["PROFILE_DETAILS"],
 				secure : true
 			};			
 			AjaxService.invoke(requestObj).then(function(res){			

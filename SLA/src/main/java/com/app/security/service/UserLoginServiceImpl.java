@@ -5,8 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.app.security.AppJwtTokenUtil;
-import com.app.security.AppJwtUser;
+import com.app.security.AppAuthUser;
 import com.app.security.dao.UserLoginDao;
 import com.app.usermanagement.entity.UserDetailsEntity;
 import com.app.utils.ServiceConstants;
@@ -18,16 +17,16 @@ public class UserLoginServiceImpl implements UserLoginService {
 	private UserLoginDao userLoginDao;
 
 	@Autowired
-	private AppJwtTokenUtil appJwtTokenUtil;
+	private AppSecurityTokenService securityTokenService;
 
 	@Override
 	public UserDetailsEntity login(String username, String password, HttpServletResponse httpServletResponse) throws Exception {
 
 		UserDetailsEntity userDetailsEntity = userLoginDao.login(username, password);
 
-		AppJwtUser appJwtUser = new AppJwtUser(userDetailsEntity);
+		AppAuthUser appJwtUser = new AppAuthUser(userDetailsEntity);
 
-		final String token = appJwtTokenUtil.generateToken(appJwtUser);
+		final String token = securityTokenService.generateToken(appJwtUser);
 
 		httpServletResponse.setHeader("Token", token);
 

@@ -67,7 +67,7 @@ public class UserServiceImpl implements UserService {
 			userDao.saveUserAddresses(userDetails.getAddresses(), user);
 		}
 
-		//userMessageService.sendRegistrationMail(userDetails,password);
+		userMessageService.sendRegistrationMail(userDetails,password);
 	}
 
 	@Override

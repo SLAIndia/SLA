@@ -2,7 +2,6 @@ package com.app.security;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Date;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -11,42 +10,33 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.app.usermanagement.entity.UserDetailsEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-public class AppJwtUser implements UserDetails {
+public class AppAuthUser implements UserDetails {
 
+	private static final long serialVersionUID = -3124445235780011074L;
 	private final Long id;
 	private final String username;
-	private final String firstname;
-	private final String lastname;
 	private final String password;
-	private final String email;
 	private final Collection<? extends GrantedAuthority> authorities;
 	private final boolean enabled;
-	private final Date lastPasswordResetDate;
 
-	public AppJwtUser(Long id, String username, String firstname, String lastname, String email, String password,
-			Collection<? extends GrantedAuthority> authorities, boolean enabled, Date lastPasswordResetDate) {
+	public AppAuthUser(Long id, String username, String password, Collection<? extends GrantedAuthority> authorities,
+			boolean enabled) {
 		this.id = id;
 		this.username = username;
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.email = email;
+
 		this.password = password;
 		this.authorities = authorities;
 		this.enabled = enabled;
-		this.lastPasswordResetDate = lastPasswordResetDate;
+
 	}
 
-	public AppJwtUser(UserDetailsEntity userDetailsEntity) {
+	public AppAuthUser(UserDetailsEntity userDetailsEntity) {
 		this.id = userDetailsEntity.getUser().getId().longValue();
 		this.username = userDetailsEntity.getUser().getUsername();
-		this.firstname = userDetailsEntity.getFname();
-		this.lastname = userDetailsEntity.getLname();
-		this.email = userDetailsEntity.getpEmail();
 		this.password = userDetailsEntity.getUser().getPassword();
 		this.authorities = Collections
 				.singletonList(new SimpleGrantedAuthority(userDetailsEntity.getUser().getUserType().getUserType()));
 		this.enabled = userDetailsEntity.getUser().getUserStatus() == 1;
-		this.lastPasswordResetDate = userDetailsEntity.getUser().getUpdatedDt();
 
 	}
 
@@ -78,18 +68,6 @@ public class AppJwtUser implements UserDetails {
 		return true;
 	}
 
-	public String getFirstname() {
-		return firstname;
-	}
-
-	public String getLastname() {
-		return lastname;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
 	@JsonIgnore
 	@Override
 	public String getPassword() {
@@ -106,8 +84,4 @@ public class AppJwtUser implements UserDetails {
 		return enabled;
 	}
 
-	@JsonIgnore
-	public Date getLastPasswordResetDate() {
-		return lastPasswordResetDate;
-	}
 }

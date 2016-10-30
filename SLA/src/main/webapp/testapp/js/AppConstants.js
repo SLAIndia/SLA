@@ -3,7 +3,7 @@ var AppConstants = (function(){
 	let consts =  {	    
 	    URL :{	    	 
 	    	LOGIN: BASE_URL+"login",
-	    	PROFILE_DETAILS:BASE_URL+"profile/details/",
+	    	PROFILE_DETAILS:BASE_URL+"usermanagement/role",
 	    	CONSUMER_DETAILS:BASE_URL+"consumer/check",
 	    	PROVIDER_DETAILS:BASE_URL+"provider/check",
 	    },

@@ -27,8 +27,10 @@ public class AppAuthFilter implements Filter {
 			HttpServletRequest servletRequest = (HttpServletRequest) request;
 			String authorization = servletRequest.getHeader("Authorization");
 			if (authorization != null) {
-				AppAuthToken token = new AppAuthToken(authorization.replaceAll("Bearer ", ""));
-				SecurityContextHolder.getContext().setAuthentication(token);
+				// AppAuthToken token = new
+				AppAuthToken appAuthenticatedProfile = new AppAuthToken(
+						authorization.replaceAll("Bearer ", ""));
+				SecurityContextHolder.getContext().setAuthentication(appAuthenticatedProfile);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
