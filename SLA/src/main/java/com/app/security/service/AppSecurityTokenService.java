@@ -2,13 +2,17 @@ package com.app.security.service;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
-import org.springframework.mobile.device.Device;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import com.app.security.AppAuthUser;
@@ -21,61 +25,52 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @Component
 public class AppSecurityTokenService {
 
-	static final String CLAIM_KEY_USERNAME = "sub";
-	static final String CLAIM_KEY_USER_OBJECT = "obj";
-	static final String CLAIM_KEY_AUDIENCE = "audience";
+	static final String CLAIM_KEY_ID = "id";
+	static final String CLAIM_KEY_USERNAME = "username";
+	static final String CLAIM_KEY_PASSWORD = "password";
+	static final String CLAIM_KEY_AUTHORITIES = "authorities";
+	static final String CLAIM_KEY_STATUS = "status";
+
 	static final String CLAIM_KEY_CREATED = "created";
 
-	private static final String AUDIENCE_UNKNOWN = "unknown";
-	private static final String AUDIENCE_WEB = "web";
-	private static final String AUDIENCE_MOBILE = "mobile";
-	private static final String AUDIENCE_TABLET = "tablet";
-
-	private String secret = "554dddd";
+	private String secret = "secret43046789";
 	private Long expiration = 604800L;
 
-	public String generateToken(UserDetails userDetails, Device device) {
-		Map<String, Object> claims = new HashMap<>();
-		claims.put(CLAIM_KEY_USERNAME, userDetails.getUsername());
-		claims.put(CLAIM_KEY_AUDIENCE, generateAudience(device));
-		claims.put(CLAIM_KEY_CREATED, new Date());
-		return generateToken(claims);
-	}
-
 	public String generateToken(AppAuthUser appJwtUser) {
+
 		Map<String, Object> claims = new HashMap<>();
+		claims.put(CLAIM_KEY_ID, appJwtUser.getId());
 		claims.put(CLAIM_KEY_USERNAME, appJwtUser.getUsername());
-		claims.put(CLAIM_KEY_USER_OBJECT, appJwtUser);
+		claims.put(CLAIM_KEY_PASSWORD, appJwtUser.getPassword());
+		List<String> authorities = appJwtUser.getAuthorities().stream().map(authority -> authority.toString().trim())
+				.collect(Collectors.toList());
+		claims.put(CLAIM_KEY_AUTHORITIES, authorities);
+		claims.put(CLAIM_KEY_STATUS, appJwtUser.isEnabled());
 		claims.put(CLAIM_KEY_CREATED, new Date());
 		return generateToken(claims);
-	}
-
-	String generateToken(Map<String, Object> claims) {
-		return Jwts.builder().setClaims(claims).setExpiration(generateExpirationDate())
-				.signWith(SignatureAlgorithm.HS512, secret).compact();
 	}
 
 	@SuppressWarnings("unchecked")
 	public Optional<AppAuthUser> verify(String token) throws IOException, URISyntaxException {
 
 		Jws<Claims> claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
-		return (Optional<AppAuthUser>) claims.getBody().get(CLAIM_KEY_USER_OBJECT);
+		Claims c = claims.getBody();
+		AppAuthUser appAuthUser = new AppAuthUser(Long.parseLong(c.get(CLAIM_KEY_ID).toString()),
+				c.get(CLAIM_KEY_USERNAME).toString(), 
+				c.get(CLAIM_KEY_PASSWORD).toString(),
+				(ArrayList<String>) c.get(CLAIM_KEY_AUTHORITIES),
+				Boolean.parseBoolean(c.get(CLAIM_KEY_STATUS).toString()));
+
+		return Optional.of(appAuthUser);
+	}
+
+	private String generateToken(Map<String, Object> claims) {
+		return Jwts.builder().setClaims(claims).setExpiration(generateExpirationDate())
+				.signWith(SignatureAlgorithm.HS512, secret).compact();
 	}
 
 	private Date generateExpirationDate() {
 		return new Date(System.currentTimeMillis() + expiration * 1000);
-	}
-
-	private String generateAudience(Device device) {
-		String audience = AUDIENCE_UNKNOWN;
-		if (device.isNormal()) {
-			audience = AUDIENCE_WEB;
-		} else if (device.isTablet()) {
-			audience = AUDIENCE_TABLET;
-		} else if (device.isMobile()) {
-			audience = AUDIENCE_MOBILE;
-		}
-		return audience;
 	}
 
 }

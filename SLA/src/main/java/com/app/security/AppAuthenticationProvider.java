@@ -33,12 +33,13 @@ public class AppAuthenticationProvider implements AuthenticationProvider {
 			return new AppAuthenticatedProfile(appJwtUser.get());
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new AppAuthenticationException("Failed to verify token", e);
 		}
 	}
 
 	@Override
 	public boolean supports(Class<?> authentication) {
-		return AppAuthenticatedProfile.class.equals(authentication);
+		return AppAuthToken.class.equals(authentication);
 	}
 }

@@ -43,14 +43,14 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 		                "/testapp/**/*.css",
 		                "/testapp/**/*.js"
 		        ).permitAll()
-                .antMatchers("/login","/usermanagement/**/*")
+                .antMatchers("/login","/usermanagement/**/*","/usermanagement/*")		      
                 .permitAll()
+                .antMatchers("/provider/*")
+                .hasAuthority("PROVIDER")
                 .antMatchers("/profile/**/*")
                 .hasAuthority("USER")
                 .antMatchers("/consumer/*")
-                .hasAuthority("CONSUMER")
-                .antMatchers("/provider/*")
-                .hasAuthority("CONSUMER")
+                .hasAuthority("CONSUMER")                
                 .and()
                 .addFilterBefore(appAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling().accessDeniedHandler(new AppAccessDeniedHandler())
